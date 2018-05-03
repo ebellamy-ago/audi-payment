@@ -1,0 +1,163 @@
+{
+    "swagger": "2.0",
+    "paths": {
+        "/": {
+            "post": {
+                "description": "Retrieve payments informations like a payment page.",
+                "parameters": [
+                    {
+                        "name": "provider",
+                        "in": "query",
+                        "description": "Name of the payment provider (ex: magellan).",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "currency",
+                        "in": "query",
+                        "description": "Only for Magellan provider.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "reference_id",
+                        "in": "query",
+                        "description": "Only for Magellan provider.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "amount",
+                        "in": "query",
+                        "description": "Only for Magellan provider.",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "lastname",
+                        "in": "query",
+                        "description": "Only for Magellan provider.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Only for Magellan provider.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Only for Magellan provider.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "merchant_login",
+                        "in": "query",
+                        "description": "Only for Magellan provider.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "merchant_pwd",
+                        "in": "query",
+                        "description": "Only for Magellan provider.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "merchant_id",
+                        "in": "query",
+                        "description": "Only for Magellan provider.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "url_cancel",
+                        "in": "query",
+                        "description": "Only for Magellan provider.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "url_post_data",
+                        "in": "query",
+                        "description": "Only for Magellan provider.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "url_receipt",
+                        "in": "query",
+                        "description": "Only for Magellan provider.",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A JSON file with an element 'content'."
+                    }
+                }
+            }
+        },
+        "/cancel/{provider}": {
+            "post": {
+                "description": "Cancel a transaction by reference_id.",
+                "parameters": [
+                    {
+                        "name": "provider",
+                        "in": "path",
+                        "description": "Name of the payment provider (ex: magellan).",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "reference_id",
+                        "in": "query",
+                        "description": "Only for Magellan provider.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "result_label",
+                        "in": "query",
+                        "description": "Only for Magellan provider.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "transaction_id",
+                        "in": "query",
+                        "description": "Only for Magellan provider.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "auth_code",
+                        "in": "query",
+                        "description": "Only for Magellan provider.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "result_code",
+                        "in": "query",
+                        "description": "Only for Magellan provider.",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A JSON file with confirmation message for cancel."
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {}
+}

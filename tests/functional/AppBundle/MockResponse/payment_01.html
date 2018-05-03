@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <script> function loadForm() { document.getElementById('paymentForm').submit(); } </script>
+        <style>
+            .dimension {
+                width:700px;
+                height:700px;
+                margin:0 auto;
+            }
+        </style>
+    </head>
+
+    <body onload="loadForm();">
+        <form id="paymentForm" method="post" target="paymentFrame" action="https://epay.magellanset.com/api/merchantAuthenticateServlet">
+            <input type="hidden" name="merchant_login" id="merchant_login" value="Log1" />
+            <input type="hidden" name="merchant_pwd" id="merchant_pwd" value="Pwd1"/>
+            <input type="hidden" name="merchant_id" id=" merchant_id" value="Id1" />
+            <input type="hidden" name="amount" id="amount" value="100" />
+            <input type="hidden" name="currency" id="currency" value="EUR" />
+            <input type="hidden" name="buyer_lastname" id=" buyer_lastname" value="JOHN" />
+            <input type="hidden" name="buyer_name" id="buyer_name" value="DOE" />
+            <input type="hidden" name="buyer_phone" id="buyer_phone" value="0102030405" />
+            <input type="hidden" name="url_cancel" id="url_cancel" value="https://audi-url.com/cancel1" />
+            <input type="hidden" name="url_post_data" id="url_post_data" value="https://audi-url.com/post_data1" />
+            <input type="hidden" name="url_receipt" id="url_receipt" value="https://audi-url.com/receipt1" />
+            <input type="hidden" name="reference_id" id="reference_id" value="126460319" />
+            <input type="hidden" name="hash" id="hash" value="JDgt2Ru4dXSRAahFhyerZB1SBGFdjPH4SGTj+PKBvCM=" />
+        </form>
+        <div class="dimension">
+            <iframe src="#" name="paymentFrame" class="dimension" id="paymentFrame" align="middle" />
+        </div>
+    </body>
+</html>

@@ -1,0 +1,24 @@
+Mullenlowe\PayPluginBundle\Model\AbstractTransaction:
+  type: entity
+  inheritanceType: SINGLE_TABLE
+  discriminatorColumn:
+    name: type
+    type: string
+  table: pay_transaction
+  id:
+    id:
+        type: integer
+        generator: { strategy: AUTO }
+  fields:
+    referenceId:
+      type: integer
+    amount:
+      type: float
+    currency:
+      type: string
+      length: 10
+    createdAt:
+      type: datetime
+      gedmo:
+        timestampable:
+          on: create

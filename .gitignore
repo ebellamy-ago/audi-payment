@@ -1,0 +1,14 @@
+/.web-server-pid
+app/config/parameters.yml
+/build/
+/phpunit.xml
+/var/*
+/vendor/
+/web/bundles/
+/web/swagger-ui
+tests/_data/*
+tests/_output
+tests/_support/_generated
+
+#ide
+.idea
