@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "788a95da62e641d300c6919a1bc86249",
+    "content-hash": "7b477bcb31139c867f254c348b07eba0",
     "packages": [
         {
             "name": "behat/gherkin",
@@ -1665,16 +1665,16 @@
         },
         {
             "name": "mullenlowe/pay-plugin-bundle",
-            "version": "dev-improve-transactions",
+            "version": "dev-develop",
             "source": {
                 "type": "git",
                 "url": "git@github.com:itagenceone/pay-plugins.git",
-                "reference": "8761962ab28889f6d2788003653fd0beeac6a6da"
+                "reference": "07b8190607ada91d59469a2dedb3ac88742a2ba0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itagenceone/pay-plugins/zipball/8761962ab28889f6d2788003653fd0beeac6a6da",
-                "reference": "8761962ab28889f6d2788003653fd0beeac6a6da",
+                "url": "https://api.github.com/repos/itagenceone/pay-plugins/zipball/07b8190607ada91d59469a2dedb3ac88742a2ba0",
+                "reference": "07b8190607ada91d59469a2dedb3ac88742a2ba0",
                 "shasum": ""
             },
             "require": {
@@ -1697,7 +1697,7 @@
                 }
             ],
             "description": "A bundle for communicate with some payment platforms.",
-            "time": "2018-05-31T09:33:20+00:00"
+            "time": "2018-06-07T18:52:05+00:00"
         },
         {
             "name": "myclabs/deep-copy",

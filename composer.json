@@ -24,7 +24,7 @@
         "doctrine/doctrine-bundle": "^1.6",
         "doctrine/orm": "^2.5",
         "incenteev/composer-parameter-handler": "^2.0",
-        "mullenlowe/pay-plugin-bundle": "dev-improve-transactions",
+        "mullenlowe/pay-plugin-bundle": "dev-develop",
         "sensio/distribution-bundle": "^5.0.19",
         "sensio/framework-extra-bundle": "^5.0.0",
         "stof/doctrine-extensions-bundle": "^1.3",
