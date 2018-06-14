@@ -14,5 +14,5 @@ parameters:
     # A secret key that's used to generate certain security-related tokens
     secret: ThisTokenIsNotSoSecretChangeIt
 
-    payment.magellan.url: https://epay.magellanset.com/api/merchantAuthenticateServlet
-    payment.magellan.secret: serhdfbv985619431qsqdcds
+    payment_magellan_url: https://epay.magellanset.com/api/merchantAuthenticateServlet
+    payment_magellan_secret: serhdfbv985619431qsqdcds

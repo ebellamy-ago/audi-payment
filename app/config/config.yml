@@ -76,5 +76,5 @@ stof_doctrine_extensions:
 
 pay_plugin:
     magellan:
-        url: '%payment.magellan.url%'
-        secret: '%payment.magellan.secret%'
+        url: '%payment_magellan_url%'
+        secret: '%payment_magellan_url%'
