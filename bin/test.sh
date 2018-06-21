@@ -46,7 +46,6 @@ echo "Runing codecept with following arguments :  $CODECEPT_OPTIONS"
 codecept build
 
 php bin/console doctrine:schema:update --force --env=test
-php bin/console doctrine:fixtures:load --no-interaction --env=test
 sqlite3 tests/_data/test.sqlite .dump > tests/_data/test.sql
 
 codecept run $CODECEPT_OPTIONS
