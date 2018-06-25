@@ -24,6 +24,8 @@
         "doctrine/doctrine-bundle": "^1.6",
         "doctrine/orm": "^2.5",
         "incenteev/composer-parameter-handler": "^2.0",
+        "mullenlowe/audi-agc5-common-bundle": "dev-develop",
+        "mullenlowe/component": "dev-master",
         "mullenlowe/pay-plugin-bundle": "dev-develop",
         "sensio/distribution-bundle": "^5.0.19",
         "sensio/framework-extra-bundle": "^5.0.0",
@@ -41,6 +43,16 @@
         "zircote/swagger-php": "^2.0"
     },
     "repositories": [
+        {
+            "type": "vcs",
+            "no-api": true,
+            "url": "git@github.com:itagenceone/audi-agc5-common-bundle.git"
+        },
+        {
+            "type": "vcs",
+            "no-api": true,
+            "url": "git@github.com:itagenceone/component.git"
+        },
         {
             "type": "vcs",
             "no-api": true,
