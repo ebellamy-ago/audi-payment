@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "98d0bfd4db007ea86b1f8e4b476f0684",
+    "content-hash": "d37fd0689ec56b8f2730d824cf562c61",
     "packages": [
         {
             "name": "behat/gherkin",
@@ -2453,6 +2453,68 @@
             "time": "2018-06-22T12:50:36+00:00"
         },
         {
+            "name": "mullenlowe/audi-agc5-plugins-bundle",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:itagenceone/audi-agc5-plugins-bundle.git",
+                "reference": "64436ec038f4c5d6f55436ede586422fe4a30e29"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/itagenceone/audi-agc5-plugins-bundle/zipball/64436ec038f4c5d6f55436ede586422fe4a30e29",
+                "reference": "64436ec038f4c5d6f55436ede586422fe4a30e29",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/doctrine-bundle": "^1.6",
+                "doctrine/orm": "^2.5",
+                "guzzlehttp/guzzle": "^6.3",
+                "incenteev/composer-parameter-handler": "^2.0",
+                "nelmio/cors-bundle": "^1.5",
+                "nicolab/php-ftp-client": "^1.4",
+                "php": ">=7",
+                "php-amqplib/rabbitmq-bundle": "^1.13",
+                "phpseclib/phpseclib": "^2.0",
+                "realestateconz/mssql-bundle": "^2.0",
+                "sensio/distribution-bundle": "^5.0.19",
+                "sensio/framework-extra-bundle": "^5.0.0",
+                "symfony/monolog-bundle": "^3.1.0",
+                "symfony/polyfill-apcu": "^1.0",
+                "symfony/symfony": "3.4.*",
+                "twig/twig": "^1.0||^2.0"
+            },
+            "require-dev": {
+                "sensio/generator-bundle": "^3.0",
+                "swagger-api/swagger-ui": "^3.0",
+                "symfony/phpunit-bridge": "^3.0",
+                "zircote/swagger-php": "^2.0"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": null
+            },
+            "autoload": {
+                "psr-4": {
+                    "Mullenlowe\\PluginsBundle\\": "src"
+                }
+            },
+            "license": [
+                "proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "Mullenlowe",
+                    "email": "dev-audi@agence-one.net"
+                }
+            ],
+            "keywords": [
+                "bundle",
+                "wega"
+            ],
+            "time": "2018-06-21T12:54:18+00:00"
+        },
+        {
             "name": "mullenlowe/component",
             "version": "dev-master",
             "source": {
@@ -2753,6 +2815,112 @@
                 "rest"
             ],
             "time": "2018-04-27T17:36:50+00:00"
+        },
+        {
+            "name": "nelmio/cors-bundle",
+            "version": "1.5.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nelmio/NelmioCorsBundle.git",
+                "reference": "548dc8ebd3984acd2f6d8787ab1dac2e9aa14254"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nelmio/NelmioCorsBundle/zipball/548dc8ebd3984acd2f6d8787ab1dac2e9aa14254",
+                "reference": "548dc8ebd3984acd2f6d8787ab1dac2e9aa14254",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/framework-bundle": "^2.7 || ^3.0 || ^4.0"
+            },
+            "require-dev": {
+                "matthiasnoback/symfony-dependency-injection-test": "^1.0 || ^2.0",
+                "mockery/mockery": "^0.9 || ^1.0",
+                "symfony/phpunit-bridge": "^2.7 || ^3.0 || ^4.0"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.5.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Nelmio\\CorsBundle\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nelmio",
+                    "homepage": "http://nelm.io"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://github.com/nelmio/NelmioCorsBundle/contributors"
+                }
+            ],
+            "description": "Adds CORS (Cross-Origin Resource Sharing) headers support in your Symfony2 application",
+            "keywords": [
+                "api",
+                "cors",
+                "crossdomain"
+            ],
+            "time": "2017-12-11T18:41:54+00:00"
+        },
+        {
+            "name": "nicolab/php-ftp-client",
+            "version": "v1.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Nicolab/php-ftp-client.git",
+                "reference": "0e0c7666bdc3fb9fc9e63b065c84979588101708"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Nicolab/php-ftp-client/zipball/0e0c7666bdc3fb9fc9e63b065c84979588101708",
+                "reference": "0e0c7666bdc3fb9fc9e63b065c84979588101708",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "FtpClient": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Tallefourtane",
+                    "email": "dev@nicolab.net",
+                    "homepage": "http://nicolab.net"
+                }
+            ],
+            "description": "A flexible FTP and SSL-FTP client for PHP. This lib provides helpers easy to use to manage the remote files.",
+            "homepage": "https://github.com/Nicolab/php-ftp-client",
+            "keywords": [
+                "file",
+                "ftp",
+                "helper",
+                "lib",
+                "server",
+                "sftp",
+                "ssl",
+                "ssl-ftp"
+            ],
+            "time": "2017-01-20T06:44:54+00:00"
         },
         {
             "name": "pagerfanta/pagerfanta",
@@ -3266,6 +3434,98 @@
                 }
             ],
             "time": "2017-07-14T14:27:02+00:00"
+        },
+        {
+            "name": "phpseclib/phpseclib",
+            "version": "2.0.11",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpseclib/phpseclib.git",
+                "reference": "7053f06f91b3de78e143d430e55a8f7889efc08b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/7053f06f91b3de78e143d430e55a8f7889efc08b",
+                "reference": "7053f06f91b3de78e143d430e55a8f7889efc08b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "phing/phing": "~2.7",
+                "phpunit/phpunit": "^4.8.35|^5.7|^6.0",
+                "sami/sami": "~2.0",
+                "squizlabs/php_codesniffer": "~2.0"
+            },
+            "suggest": {
+                "ext-gmp": "Install the GMP (GNU Multiple Precision) extension in order to speed up arbitrary precision integer arithmetic operations.",
+                "ext-libsodium": "SSH2/SFTP can make use of some algorithms provided by the libsodium-php extension.",
+                "ext-mcrypt": "Install the Mcrypt extension in order to speed up a few other cryptographic operations.",
+                "ext-openssl": "Install the OpenSSL extension in order to speed up a wide variety of cryptographic operations."
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "phpseclib/bootstrap.php"
+                ],
+                "psr-4": {
+                    "phpseclib\\": "phpseclib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jim Wigginton",
+                    "email": "terrafrost@php.net",
+                    "role": "Lead Developer"
+                },
+                {
+                    "name": "Patrick Monnerat",
+                    "email": "pm@datasphere.ch",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Andreas Fischer",
+                    "email": "bantu@phpbb.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Hans-Jürgen Petrich",
+                    "email": "petrich@tronic-media.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Graham Campbell",
+                    "email": "graham@alt-three.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP Secure Communications Library - Pure-PHP implementations of RSA, AES, SSH2, SFTP, X.509 etc.",
+            "homepage": "http://phpseclib.sourceforge.net",
+            "keywords": [
+                "BigInteger",
+                "aes",
+                "asn.1",
+                "asn1",
+                "blowfish",
+                "crypto",
+                "cryptography",
+                "encryption",
+                "rsa",
+                "security",
+                "sftp",
+                "signature",
+                "signing",
+                "ssh",
+                "twofish",
+                "x.509",
+                "x509"
+            ],
+            "time": "2018-04-15T16:55:05+00:00"
         },
         {
             "name": "phpspec/prophecy",
@@ -4056,6 +4316,56 @@
                 "promises"
             ],
             "time": "2018-06-13T15:59:06+00:00"
+        },
+        {
+            "name": "realestateconz/mssql-bundle",
+            "version": "2.1.0",
+            "target-dir": "Realestate/MssqlBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/realestateconz/MssqlBundle.git",
+                "reference": "def7ba7eabd3791944afae445364d042c2dbd8f4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/realestateconz/MssqlBundle/zipball/def7ba7eabd3791944afae445364d042c2dbd8f4",
+                "reference": "def7ba7eabd3791944afae445364d042c2dbd8f4",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/common": "~2.2,>=2.2.3"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "Realestate\\MssqlBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ken Golovin",
+                    "homepage": "https://github.com/pasinter"
+                },
+                {
+                    "name": "Realestate.co.nz",
+                    "homepage": "http://www.realestate.co.nz"
+                },
+                {
+                    "name": "Community contributions",
+                    "homepage": "https://github.com/realestateconz/MssqlBundle/contributors"
+                }
+            ],
+            "description": "Microsoft SQL Server Bundle for Symfony 2",
+            "keywords": [
+                "driver",
+                "mssql",
+                "sql server"
+            ],
+            "time": "2013-12-08T21:55:16+00:00"
         },
         {
             "name": "ruflin/elastica",
@@ -6012,6 +6322,7 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "mullenlowe/audi-agc5-common-bundle": 20,
+        "mullenlowe/audi-agc5-plugins-bundle": 20,
         "mullenlowe/component": 20,
         "mullenlowe/pay-plugin-bundle": 20
     },
