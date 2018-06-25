@@ -30,6 +30,8 @@ framework:
     assets: ~
     php_errors:
         log: true
+    templating:
+        engines: ['twig']
 
 # Twig Configuration
 twig:
@@ -79,3 +81,9 @@ pay_plugin:
     magellan:
         url: '%payment_magellan_url%'
         secret: '%payment_magellan_url%'
+
+fos_rest:
+    format_listener: true
+    routing_loader:
+        default_format: json
+        include_format: false

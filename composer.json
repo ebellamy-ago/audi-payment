@@ -23,6 +23,7 @@
         "php": ">=5.5.9",
         "doctrine/doctrine-bundle": "^1.6",
         "doctrine/orm": "^2.5",
+        "friendsofsymfony/rest-bundle": "^2.3",
         "incenteev/composer-parameter-handler": "^2.0",
         "mullenlowe/audi-agc5-common-bundle": "dev-develop",
         "mullenlowe/audi-agc5-plugins-bundle": "dev-develop",
