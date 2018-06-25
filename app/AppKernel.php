@@ -21,7 +21,7 @@ class AppKernel extends Kernel
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new FOS\RestBundle\FOSRestBundle(),
             new Lexik\Bundle\JWTAuthenticationBundle\LexikJWTAuthenticationBundle(),
-            new Mullenlowe\CommonBund(),
+            new Mullenlowe\CommonBundle\MullenloweCommonBundle(),
 
             new AppBundle\AppBundle(),
 
