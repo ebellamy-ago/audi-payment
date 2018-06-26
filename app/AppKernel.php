@@ -10,6 +10,10 @@ class AppKernel extends Kernel
     {
         $bundles = [
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
+            new Lexik\Bundle\JWTAuthenticationBundle\LexikJWTAuthenticationBundle(),
+            new FOS\RestBundle\FOSRestBundle(),
+            new Mullenlowe\CommonBundle\MullenloweCommonBundle(),
+            new Mullenlowe\PluginsBundle\MullenlowePluginsBundle(),
             new Symfony\Bundle\SecurityBundle\SecurityBundle(),
             new Symfony\Bundle\TwigBundle\TwigBundle(),
             new Symfony\Bundle\MonologBundle\MonologBundle(),
@@ -17,11 +21,8 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Mullenlowe\PayPluginBundle\PayPluginBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
-            new Lexik\Bundle\JWTAuthenticationBundle\LexikJWTAuthenticationBundle(),
-            new FOS\RestBundle\FOSRestBundle(),
+
             new AppBundle\AppBundle(),
-            new Mullenlowe\CommonBundle\MullenloweCommonBundle(),
-            new Mullenlowe\PluginsBundle\MullenlowePluginsBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
