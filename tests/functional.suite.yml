@@ -1,0 +1,25 @@
+actor: FunctionalTester
+modules:
+    enabled:
+        - \Helper\Functional
+        - Symfony:
+            app_path: 'app'
+            environment: 'test'
+        - Doctrine2:
+            depends: Symfony
+            cleanup: true
+        - REST:
+            url: http://localhost
+            depends: Symfony
+        - Db:
+            dsn: 'sqlite:./tests/_data/test.sqlite'
+            user: ''
+            password: ''
+            populate: true
+            cleanup: true
+            reconnect: true
+        - Asserts
+    config:
+        - Symfony:
+           app_path: 'src'
+           environment: 'test'

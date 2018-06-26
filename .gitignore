@@ -1,0 +1,20 @@
+/.web-server-pid
+app/config/parameters.yml
+/build/
+/phpunit.xml
+/vendor/
+/web/bundles/
+/web/swagger-ui
+tests/_output
+tests/_support/_generated
+
+# Cache, session files and logs (Symfony3)
+/var/cache/*
+/var/logs/*
+/var/sessions/*
+!var/cache/.gitkeep
+!var/logs/.gitkeep
+!var/sessions/.gitkeep
+
+#ide
+.idea

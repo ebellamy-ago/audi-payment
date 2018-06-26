@@ -1,0 +1,20 @@
+# This file is a "template" of what your parameters.yml file should look like
+# Set parameters here that may be different on each deployment target of the app, e.g. development, staging, production.
+# https://symfony.com/doc/current/best_practices/configuration.html#infrastructure-related-configuration
+parameters:
+    database_host: 127.0.0.1
+    database_port: ~
+    database_name: DEV_DB_PAYMENTS
+    database_user: root
+    database_password: spirit
+
+    api_host: api5.audi.dev.agence-one.net
+
+    # You should uncomment this if you want to use pdo_sqlite
+    database_path: '%kernel.project_dir%/tests/_data/test.sqlite'
+
+    # A secret key that's used to generate certain security-related tokens
+    secret: ThisTokenIsNotSoSecretChangeIt
+
+    payment_magellan_url: https://epay.magellanset.com/api/merchantAuthenticateServlet
+    payment_magellan_secret: serhdfbv985619431qsqdcds
