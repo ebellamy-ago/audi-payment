@@ -17,11 +17,11 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Mullenlowe\PayPluginBundle\PayPluginBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
-            new FOS\RestBundle\FOSRestBundle(),
             new Lexik\Bundle\JWTAuthenticationBundle\LexikJWTAuthenticationBundle(),
-            new Mullenlowe\CommonBundle\MullenloweCommonBundle(),
-
+            new FOS\RestBundle\FOSRestBundle(),
             new AppBundle\AppBundle(),
+            new Mullenlowe\CommonBundle\MullenloweCommonBundle(),
+            new Mullenlowe\PluginsBundle\MullenlowePluginsBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

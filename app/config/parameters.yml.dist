@@ -8,6 +8,8 @@ parameters:
     database_user: root
     database_password: spirit
 
+    api_host: api5.audi.dev.agence-one.net
+
     # You should uncomment this if you want to use pdo_sqlite
     database_path: '%kernel.project_dir%/tests/_data/test.sqlite'
 

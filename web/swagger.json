@@ -1,5 +1,6 @@
 {
     "swagger": "2.0",
+    "host": "api5.audi.dev.agence-one.net",
     "paths": {
         "/": {
             "post": {
