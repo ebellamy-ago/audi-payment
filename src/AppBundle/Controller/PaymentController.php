@@ -7,15 +7,18 @@ use Mullenlowe\PayPluginBundle\Model\AbstractTransaction;
 use Mullenlowe\PayPluginBundle\Model\StatusTransactionInterface;
 use Mullenlowe\PayPluginBundle\Service\Provider\Providers;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Swagger\Annotations as SWG;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use FOS\RestBundle\Controller\Annotations as Rest;
+use Mullenlowe\CommonBundle\Controller\MullenloweRestController;
 
-class PaymentController extends Controller
+class PaymentController extends MullenloweRestController
 {
+    const CONTEXT = 'Payment';
+
     /**
-     * @Route("/", methods={"POST"})
+     * @Rest\Post("/", name="get_payment_informations")
      * @ParamConverter(name="transaction", converter="transaction_converter")
      * @SWG\Post(
      *     path="/",
@@ -132,7 +135,7 @@ class PaymentController extends Controller
     }
 
     /**
-     * @Route("/cancel/{provider}")
+     * @Rest\Post("/cancel/{provider}", name="cancel_payments")
      * @ParamConverter(name="transactionStatus", converter="transaction_converter")
      * @SWG\Post(
      *     path="/cancel/{provider}",

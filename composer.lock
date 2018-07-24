@@ -1981,6 +1981,47 @@
             "time": "2014-10-12T19:18:40+00:00"
         },
         {
+            "name": "hadesarchitect/json-schema-bundle",
+            "version": "v1.0.0",
+            "target-dir": "HadesArchitect/JsonSchemaBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/HadesArchitect/JsonSchemaBundle.git",
+                "reference": "572b5585ba5acc37fbdcc4e9c28662885629b4e4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/HadesArchitect/JsonSchemaBundle/zipball/572b5585ba5acc37fbdcc4e9c28662885629b4e4",
+                "reference": "572b5585ba5acc37fbdcc4e9c28662885629b4e4",
+                "shasum": ""
+            },
+            "require": {
+                "justinrainbow/json-schema": "~1.0 || ~2.0",
+                "symfony/framework-bundle": "~2.0 || ~3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~3"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "HadesArchitect\\JsonSchemaBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aleksander Volochnev",
+                    "email": "a.volochnev@gmail.com"
+                }
+            ],
+            "description": "Symfony2 bundle for Justin Rainbow's json-schema library.",
+            "time": "2016-06-16T22:54:42+00:00"
+        },
+        {
             "name": "incenteev/composer-parameter-handler",
             "version": "v2.1.3",
             "source": {
@@ -2080,6 +2121,72 @@
                 "sql"
             ],
             "time": "2014-01-12T16:20:24+00:00"
+        },
+        {
+            "name": "justinrainbow/json-schema",
+            "version": "2.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/justinrainbow/json-schema.git",
+                "reference": "6b2a33e6a768f96bdc2ead5600af0822eed17d67"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/justinrainbow/json-schema/zipball/6b2a33e6a768f96bdc2ead5600af0822eed17d67",
+                "reference": "6b2a33e6a768f96bdc2ead5600af0822eed17d67",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "json-schema/json-schema-test-suite": "1.2.0",
+                "phpdocumentor/phpdocumentor": "~2",
+                "phpunit/phpunit": "^4.8.22"
+            },
+            "bin": [
+                "bin/validate-json"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "JsonSchema\\": "src/JsonSchema/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bruno Prieto Reis",
+                    "email": "bruno.p.reis@gmail.com"
+                },
+                {
+                    "name": "Justin Rainbow",
+                    "email": "justin.rainbow@gmail.com"
+                },
+                {
+                    "name": "Igor Wiedler",
+                    "email": "igor@wiedler.ch"
+                },
+                {
+                    "name": "Robert Schönthal",
+                    "email": "seroscho@googlemail.com"
+                }
+            ],
+            "description": "A library to validate a json schema.",
+            "homepage": "https://github.com/justinrainbow/json-schema",
+            "keywords": [
+                "json",
+                "schema"
+            ],
+            "time": "2016-06-02T10:59:52+00:00"
         },
         {
             "name": "knplabs/knp-components",
@@ -2396,12 +2503,12 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:itagenceone/audi-agc5-common-bundle.git",
-                "reference": "81651f42c88b3a7b4644bf6315c4d1168bb8410c"
+                "reference": "85a4b931ca2827141af68279f8d8605c1c0a94f3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itagenceone/audi-agc5-common-bundle/zipball/81651f42c88b3a7b4644bf6315c4d1168bb8410c",
-                "reference": "81651f42c88b3a7b4644bf6315c4d1168bb8410c",
+                "url": "https://api.github.com/repos/itagenceone/audi-agc5-common-bundle/zipball/85a4b931ca2827141af68279f8d8605c1c0a94f3",
+                "reference": "85a4b931ca2827141af68279f8d8605c1c0a94f3",
                 "shasum": ""
             },
             "require": {
@@ -2410,6 +2517,7 @@
                 "friendsofsymfony/rest-bundle": "^2.2",
                 "guzzlehttp/guzzle": "^6.3",
                 "guzzlehttp/guzzle-services": "^1.1",
+                "hadesarchitect/json-schema-bundle": "^1.0",
                 "knplabs/knp-paginator-bundle": "^2.7",
                 "lexik/jwt-authentication-bundle": "^2.4",
                 "mullenlowe/component": "dev-master",
@@ -2418,6 +2526,7 @@
                 "php": ">=7",
                 "php-amqplib/rabbitmq-bundle": "~1.6",
                 "phpdocumentor/reflection-docblock": "^4.2",
+                "phpoffice/phpspreadsheet": "^1.2",
                 "ruflin/elastica": "^5.2.1",
                 "stof/doctrine-extensions-bundle": "^1.2",
                 "symfony/config": ">=3",
@@ -2450,7 +2559,7 @@
             "keywords": [
                 "bundle"
             ],
-            "time": "2018-06-22T12:50:36+00:00"
+            "time": "2018-07-18T15:35:35+00:00"
         },
         {
             "name": "mullenlowe/audi-agc5-plugins-bundle",
@@ -3434,6 +3543,92 @@
                 }
             ],
             "time": "2017-07-14T14:27:02+00:00"
+        },
+        {
+            "name": "phpoffice/phpspreadsheet",
+            "version": "1.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PHPOffice/PhpSpreadsheet.git",
+                "reference": "aa5b0d0236c907fd8dba0883f3ceb97cc52e46ec"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PHPOffice/PhpSpreadsheet/zipball/aa5b0d0236c907fd8dba0883f3ceb97cc52e46ec",
+                "reference": "aa5b0d0236c907fd8dba0883f3ceb97cc52e46ec",
+                "shasum": ""
+            },
+            "require": {
+                "ext-ctype": "*",
+                "ext-dom": "*",
+                "ext-gd": "*",
+                "ext-iconv": "*",
+                "ext-libxml": "*",
+                "ext-mbstring": "*",
+                "ext-simplexml": "*",
+                "ext-xml": "*",
+                "ext-xmlreader": "*",
+                "ext-xmlwriter": "*",
+                "ext-zip": "*",
+                "ext-zlib": "*",
+                "php": "^5.6|^7.0",
+                "psr/simple-cache": "^1.0"
+            },
+            "require-dev": {
+                "dompdf/dompdf": "^0.8.0",
+                "friendsofphp/php-cs-fixer": "@stable",
+                "jpgraph/jpgraph": "^4.0",
+                "mpdf/mpdf": "^7.0.0",
+                "phpunit/phpunit": "^5.7",
+                "squizlabs/php_codesniffer": "^2.7",
+                "tecnickcom/tcpdf": "^6.2"
+            },
+            "suggest": {
+                "dompdf/dompdf": "Option for rendering PDF with PDF Writer",
+                "jpgraph/jpgraph": "Option for rendering charts, or including charts with PDF or HTML Writers",
+                "mpdf/mpdf": "Option for rendering PDF with PDF Writer",
+                "tecnick.com/tcpdf": "Option for rendering PDF with PDF Writer"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "PhpOffice\\PhpSpreadsheet\\": "src/PhpSpreadsheet"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-2.1-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Maarten Balliauw",
+                    "homepage": "http://blog.maartenballiauw.be"
+                },
+                {
+                    "name": "Erik Tilt"
+                },
+                {
+                    "name": "Franck Lefevre",
+                    "homepage": "http://rootslabs.net"
+                },
+                {
+                    "name": "Mark Baker",
+                    "homepage": "http://markbakeruk.net"
+                }
+            ],
+            "description": "PHPSpreadsheet - Read, Create and Write Spreadsheet documents in PHP - Spreadsheet engine",
+            "homepage": "https://github.com/PHPOffice/PhpSpreadsheet",
+            "keywords": [
+                "OpenXML",
+                "excel",
+                "gnumeric",
+                "ods",
+                "php",
+                "spreadsheet",
+                "xls",
+                "xlsx"
+            ],
+            "time": "2018-06-12T13:40:21+00:00"
         },
         {
             "name": "phpseclib/phpseclib",
