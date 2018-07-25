@@ -22,7 +22,7 @@ class PaymentController extends MullenloweRestController
     const CONTEXT = 'Payment';
 
     /**
-     * @Rest\Post("/", name="")
+     * @Rest\Post("/", name="_payment")
      * @ParamConverter(name="transaction", converter="transaction_converter")
      * @SWG\Post(
      *     path="/",
@@ -124,7 +124,7 @@ class PaymentController extends MullenloweRestController
      *     )
      * )
      */
-    public function getPaymentInformationsAction(AbstractTransaction $transaction, Providers $providers)
+    public function getInformationsAction(AbstractTransaction $transaction, Providers $providers)
     {
         $manager = $this->getDoctrine()->getManager();
 
@@ -142,7 +142,7 @@ class PaymentController extends MullenloweRestController
     }
 
     /**
-     * @Rest\Post("/cancel/{provider}", name="")
+     * @Rest\Post("/cancel/{provider}", name="_payment")
      * @ParamConverter(name="transactionStatus", converter="transaction_converter")
      * @SWG\Post(
      *     path="/cancel/{provider}",
