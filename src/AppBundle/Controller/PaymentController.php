@@ -4,21 +4,25 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\TransactionHistory;
 use Mullenlowe\PayPluginBundle\Model\AbstractTransaction;
+use Mullenlowe\PayPluginBundle\Model\MagellanStatusTransaction;
 use Mullenlowe\PayPluginBundle\Model\StatusTransactionInterface;
 use Mullenlowe\PayPluginBundle\Service\Provider\Providers;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Swagger\Annotations as SWG;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use Mullenlowe\CommonBundle\Controller\MullenloweRestController;
 
+/**
+ * Class PaymentController
+ * @package AppBundle\Controller
+ */
 class PaymentController extends MullenloweRestController
 {
     const CONTEXT = 'Payment';
 
     /**
-     * @Rest\Post("/", name="get_payment_informations")
+     * @Rest\Post("/", name="")
      * @ParamConverter(name="transaction", converter="transaction_converter")
      * @SWG\Post(
      *     path="/",
@@ -124,7 +128,10 @@ class PaymentController extends MullenloweRestController
     {
         $manager = $this->getDoctrine()->getManager();
 
+        $transactionHistory = new TransactionHistory($transaction->getReferenceId(), MagellanStatusTransaction::INITIALIZED);
+
         $manager->persist($transaction);
+        $manager->persist($transactionHistory);
         $manager->flush();
 
         $provider = $providers->getByTransaction($transaction);
@@ -135,7 +142,7 @@ class PaymentController extends MullenloweRestController
     }
 
     /**
-     * @Rest\Post("/cancel/{provider}", name="cancel_payments")
+     * @Rest\Post("/cancel/{provider}", name="")
      * @ParamConverter(name="transactionStatus", converter="transaction_converter")
      * @SWG\Post(
      *     path="/cancel/{provider}",

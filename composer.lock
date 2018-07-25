@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cedcbbda9ddf11a0a0c65f7f60f2fe27",
+    "content-hash": "2bbb96decef6c368d03d4f1530a03dad",
     "packages": [
         {
             "name": "behat/gherkin",
@@ -2671,12 +2671,12 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:itagenceone/pay-plugins.git",
-                "reference": "5bd3968bdf982b1697905aef5c4662d0d9053397"
+                "reference": "9595ee475220cb9d5ccb353acbc354c2317767c7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itagenceone/pay-plugins/zipball/5bd3968bdf982b1697905aef5c4662d0d9053397",
-                "reference": "5bd3968bdf982b1697905aef5c4662d0d9053397",
+                "url": "https://api.github.com/repos/itagenceone/pay-plugins/zipball/9595ee475220cb9d5ccb353acbc354c2317767c7",
+                "reference": "9595ee475220cb9d5ccb353acbc354c2317767c7",
                 "shasum": ""
             },
             "require": {
@@ -2699,7 +2699,7 @@
                 }
             ],
             "description": "A bundle for communicate with some payment platforms.",
-            "time": "2018-06-18T09:38:48+00:00"
+            "time": "2018-07-24T14:30:22+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -6524,7 +6524,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.5.9"
+        "php": ">=7"
     },
     "platform-dev": []
 }
