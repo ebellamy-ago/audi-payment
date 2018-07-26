@@ -1,3 +1,4 @@
-payment:
-  resource: "@AppBundle/Controller/"
-  type:     annotation
+app.payment:
+    resource: AppBundle\Controller\PaymentController
+    type:     rest
+    prefix: /
