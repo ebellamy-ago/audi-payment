@@ -197,22 +197,7 @@ class PaymentController extends MullenloweRestController
      */
     public function cancelAction(StatusTransactionInterface $transactionStatus)
     {
-        $referenceId = $transactionStatus->getReferenceId();
-        $manager = $this->getDoctrine()->getManager();
-
-        $hasTransaction = (bool) $manager
-            ->getRepository(AbstractTransaction::class)
-            ->findByReferenceId($referenceId)
-        ;
-
-        if (false === $hasTransaction) {
-            throw $this->createNotFoundException(
-                sprintf('No transaction found with the reference_id "%s"', $referenceId)
-            );
-        }
-
-        $manager->persist(new TransactionHistory($referenceId, $transactionStatus->getStatus()));
-        $manager->flush();
+        $transactionStatus = $this->updateStatus($transactionStatus);
 
         return new JsonResponse(['message' => $transactionStatus->getStatusMessage()]);
     }
@@ -221,7 +206,7 @@ class PaymentController extends MullenloweRestController
      * @Rest\Post("/transaction/{provider}", name="_payment")
      * @ParamConverter(name="transactionStatus", converter="transaction_converter")
      * @SWG\Post(
-     *     path="/transaction",
+     *     path="/transaction/{provider}",
      *     description="Update a transaction by reference_id.",
      *     @SWG\Parameter(
      *         name="reference_id",
@@ -266,6 +251,13 @@ class PaymentController extends MullenloweRestController
      */
     public function transactionAction(StatusTransactionInterface $transactionStatus)
     {
+        $transactionStatus = $this->updateStatus($transactionStatus);
+
+        return new JsonResponse(['message' => $transactionStatus->getStatusMessage()]);
+    }
+
+    private function updateStatus(StatusTransactionInterface $transactionStatus)
+    {
         $referenceId = $transactionStatus->getReferenceId();
         $manager = $this->getDoctrine()->getManager();
 
@@ -283,6 +275,6 @@ class PaymentController extends MullenloweRestController
         $manager->persist(new TransactionHistory($referenceId, $transactionStatus->getStatus()));
         $manager->flush();
 
-        return new JsonResponse(['message' => $transactionStatus->getStatusMessage()]);
+        return $transactionStatus;
     }
 }

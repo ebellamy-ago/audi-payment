@@ -94,6 +94,49 @@ class PaymentControllerCest
         ];
     }
 
+    /**
+     * @dataProvider updateRequestParameters
+     */
+    public function testUpdateTransaction(\FunctionalTester  $I, Scenario $scenario, Example $example)
+    {
+        $parameters = [
+            'currency' => 'EUR',
+            'provider' => 'magellan',
+            'reference_id' => 123456789,
+            'transaction_id' => 111111111,
+            'amount' => '100',
+            'lastname' => 'JOHN',
+            'phone' => '0102030405',
+            'name' => 'DOE',
+            'merchant_login' => 'Log1',
+            'merchant_pwd' => 'Pwd1',
+            'merchant_id' => 'Id1',
+            'url_cancel' => 'https://audi-url.com/cancel1',
+            'url_post_data' => 'https://audi-url.com/post_data1',
+            'url_receipt' => 'https://audi-url.com/receipt1',
+        ];
+
+        $I->amOnPage('/');
+        $I->sendPOST('/', $parameters);
+
+        $I->amOnPage('/transaction/magellan_status');
+        $I->sendPOST('/transaction/magellan_status', $example->getIterator()->getArrayCopy());
+        $I->seeResponseIsJson('{"message": "The transaction has been successfully completed"}');
+    }
+
+    public function updateRequestParameters()
+    {
+        return [
+            [
+                'reference_id' => 123456789,
+                'result_label' => 'OK',
+                'transaction_id' => 111111111,
+                'auth_code' => '',
+                'result_code' => 'OK',
+            ]
+        ];
+    }
+
     public function getToUnset()
     {
         return [
