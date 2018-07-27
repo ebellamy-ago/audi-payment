@@ -76,8 +76,8 @@ class PaymentControllerCest
         $I->amOnPage('/');
         $I->sendPOST('/', $parameters);
 
-        $I->amOnPage('/cancel/magellan_status');
-        $I->sendPOST('/cancel/magellan_status', $example->getIterator()->getArrayCopy());
+        $I->amOnPage('/cancel/magellan-status');
+        $I->sendPOST('/cancel/magellan-status', $example->getIterator()->getArrayCopy());
         $I->seeResponseIsJson('{"message": "The transaction \"126460319\" was correctly canceled"}');
     }
 
@@ -119,8 +119,8 @@ class PaymentControllerCest
         $I->amOnPage('/');
         $I->sendPOST('/', $parameters);
 
-        $I->amOnPage('/transaction/magellan_status');
-        $I->sendPOST('/transaction/magellan_status', $example->getIterator()->getArrayCopy());
+        $I->amOnPage('/transaction/magellan-status');
+        $I->sendPOST('/transaction/magellan-status', $example->getIterator()->getArrayCopy());
         $I->seeResponseIsJson('{"message": "The transaction has been successfully completed"}');
     }
 
