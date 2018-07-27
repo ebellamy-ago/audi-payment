@@ -216,4 +216,73 @@ class PaymentController extends MullenloweRestController
 
         return new JsonResponse(['message' => $transactionStatus->getStatusMessage()]);
     }
+
+    /**
+     * @Rest\Post("/transaction/{provider}", name="_payment")
+     * @ParamConverter(name="transactionStatus", converter="transaction_converter")
+     * @SWG\Post(
+     *     path="/transaction",
+     *     description="Update a transaction by reference_id.",
+     *     @SWG\Parameter(
+     *         name="reference_id",
+     *         type="string",
+     *         required=true,
+     *         in="query",
+     *         description="Only for Magellan provider."
+     *     ),
+     *     @SWG\Parameter(
+     *         name="result_label",
+     *         type="string",
+     *         required=true,
+     *         in="query",
+     *         description="Only for Magellan provider."
+     *     ),
+     *     @SWG\Parameter(
+     *         name="transaction_id",
+     *         type="string",
+     *         required=true,
+     *         in="query",
+     *         description="Only for Magellan provider."
+     *     ),
+     *     @SWG\Parameter(
+     *         name="auth_code",
+     *         type="string",
+     *         required=true,
+     *         in="query",
+     *         description="Only for Magellan provider."
+     *     ),
+     *     @SWG\Parameter(
+     *         name="result_code",
+     *         type="string",
+     *         required=true,
+     *         in="query",
+     *         description="Only for Magellan provider."
+     *     ),
+     *     @SWG\Response(
+     *         response=200,
+     *         description="A JSON file with message result for payment."
+     *     )
+     * )
+     */
+    public function transactionAction(StatusTransactionInterface $transactionStatus)
+    {
+        $referenceId = $transactionStatus->getReferenceId();
+        $manager = $this->getDoctrine()->getManager();
+
+        $hasTransaction = (bool) $manager
+            ->getRepository(AbstractTransaction::class)
+            ->findByReferenceId($referenceId)
+        ;
+
+        if (false === $hasTransaction) {
+            throw $this->createNotFoundException(
+                sprintf('No transaction found with the reference_id "%s"', $referenceId)
+            );
+        }
+
+        $manager->persist(new TransactionHistory($referenceId, $transactionStatus->getStatus()));
+        $manager->flush();
+
+        return new JsonResponse(['message' => $transactionStatus->getStatusMessage()]);
+    }
 }
