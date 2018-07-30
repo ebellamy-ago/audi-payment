@@ -53,48 +53,6 @@ class PaymentControllerCest
     }
 
     /**
-     * @dataProvider getCancelRequestParameters
-     */
-    public function tryToCancelATransaction(\FunctionalTester  $I, Scenario $scenario, Example $example)
-    {
-        $parameters = [
-            'currency' => 'EUR',
-            'provider' => 'magellan',
-            'reference_id' => '126460319',
-            'amount' => '100',
-            'lastname' => 'JOHN',
-            'phone' => '0102030405',
-            'name' => 'DOE',
-            'merchant_login' => 'Log1',
-            'merchant_pwd' => 'Pwd1',
-            'merchant_id' => 'Id1',
-            'url_cancel' => 'https://audi-url.com/cancel1',
-            'url_post_data' => 'https://audi-url.com/post_data1',
-            'url_receipt' => 'https://audi-url.com/receipt1',
-        ];
-
-        $I->amOnPage('/');
-        $I->sendPOST('/', $parameters);
-
-        $I->amOnPage('/cancel/magellan-status');
-        $I->sendPOST('/cancel/magellan-status', $example->getIterator()->getArrayCopy());
-        $I->seeResponseIsJson('{"message": "The transaction \"126460319\" was correctly canceled"}');
-    }
-
-    public function getCancelRequestParameters()
-    {
-        return [
-            [
-                'reference_id' => 126460319,
-                'result_label' => 'Operation cancelled',
-                'transaction_id' => 12454578878,
-                'auth_code' => 123,
-                'result_code' => 'USER_CANCEL',
-            ]
-        ];
-    }
-
-    /**
      * @dataProvider updateRequestParameters
      */
     public function testUpdateTransaction(\FunctionalTester  $I, Scenario $scenario, Example $example)
