@@ -42,6 +42,7 @@ class PaymentControllerCest
             'url_cancel' => 'https://audi-url.com/cancel1',
             'url_post_data' => 'https://audi-url.com/post_data1',
             'url_receipt' => 'https://audi-url.com/receipt1',
+            'origin' => 'etron'
         ];
 
         unset($parameters[$example[0]]);
@@ -72,6 +73,7 @@ class PaymentControllerCest
             'url_cancel' => 'https://audi-url.com/cancel1',
             'url_post_data' => 'https://audi-url.com/post_data1',
             'url_receipt' => 'https://audi-url.com/receipt1',
+            'origin' => 'etron'
         ];
 
         $I->amOnPage('/');
@@ -132,6 +134,7 @@ class PaymentControllerCest
                 'url_cancel' => 'https://audi-url.com/cancel1',
                 'url_post_data' => 'https://audi-url.com/post_data1',
                 'url_receipt' => 'https://audi-url.com/receipt1',
+                'origin' => 'etron'
             ],
             [
                 'file' => 'payment_02.html',
@@ -148,6 +151,7 @@ class PaymentControllerCest
                 'url_cancel' => 'https://audi-url.com/cancel2',
                 'url_post_data' => 'https://audi-url.com/post_data2',
                 'url_receipt' => 'https://audi-url.com/receipt2',
+                'origin' => 'etron'
             ]
         ];
     }
