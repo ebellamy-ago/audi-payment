@@ -280,8 +280,9 @@ class PaymentController extends MullenloweRestController
 
         $response = [
             'reference_id' => $transaction->getReferenceId(),
+            'origin' => $transaction->getOrigin(),
             'status' => $transactionStatus->getStatus(),
-            'origin' => $transaction->getOrigin()
+            'message' => $transactionStatus->getStatusMessage(),
         ];
 
         return new JsonResponse($response);
