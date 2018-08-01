@@ -56,6 +56,13 @@ class PaymentController extends MullenloweRestController
      *         description="Only for Magellan provider."
      *     ),
      *     @SWG\Parameter(
+     *         name="origin",
+     *         type="string",
+     *         required=false,
+     *         in="query",
+     *         description="Only for Magellan provider."
+     *     ),
+     *     @SWG\Parameter(
      *         name="lastname",
      *         type="string",
      *         required=false,
@@ -208,5 +215,75 @@ class PaymentController extends MullenloweRestController
         $manager->flush();
 
         return new JsonResponse(['message' => $transactionStatus->getStatusMessage()]);
+    }
+
+    /**
+     * @Rest\Post("/receipt/{provider}", name="_payment")
+     * @ParamConverter(name="transactionStatus", converter="transaction_converter")
+     * @SWG\Post(
+     *     path="/receipt/{provider}",
+     *     description="Url receipt.",
+     *     @SWG\Parameter(
+     *         name="reference_id",
+     *         type="string",
+     *         required=true,
+     *         in="query",
+     *         description="Only for Magellan provider."
+     *     ),
+     *     @SWG\Parameter(
+     *         name="result_label",
+     *         type="string",
+     *         required=true,
+     *         in="query",
+     *         description="Only for Magellan provider."
+     *     ),
+     *     @SWG\Parameter(
+     *         name="transaction_id",
+     *         type="string",
+     *         required=true,
+     *         in="query",
+     *         description="Only for Magellan provider."
+     *     ),
+     *     @SWG\Parameter(
+     *         name="auth_code",
+     *         type="string",
+     *         required=true,
+     *         in="query",
+     *         description="Only for Magellan provider."
+     *     ),
+     *     @SWG\Parameter(
+     *         name="result_code",
+     *         type="string",
+     *         required=true,
+     *         in="query",
+     *         description="Only for Magellan provider."
+     *     ),
+     *     @SWG\Response(
+     *         response=200,
+     *         description="A JSON file with message and origin front."
+     *     )
+     * )
+     */
+    public function receiptAction(StatusTransactionInterface $transactionStatus)
+    {
+        $referenceId = $transactionStatus->getReferenceId();
+        $manager = $this->getDoctrine()->getManager();
+
+        /** @var AbstractTransaction $transaction */
+        $transaction = $manager->getRepository(AbstractTransaction::class)->findOneByReferenceId($referenceId);
+
+        if (!$transaction) {
+            throw $this->createNotFoundException(
+                sprintf('No transaction found with the reference_id "%s"', $referenceId)
+            );
+        }
+
+        $response = [
+            'reference_id' => $transaction->getReferenceId(),
+            'status' => $transactionStatus->getStatus(),
+            'origin' => $transaction->getOrigin()
+        ];
+
+        return new JsonResponse($response);
     }
 }

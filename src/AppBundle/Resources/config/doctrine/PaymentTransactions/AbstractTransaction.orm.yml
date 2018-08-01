@@ -22,3 +22,5 @@ Mullenlowe\PayPluginBundle\Model\AbstractTransaction:
       gedmo:
         timestampable:
           on: create
+    origin:
+      type: string
