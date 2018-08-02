@@ -11,7 +11,7 @@ Mullenlowe\PayPluginBundle\Model\AbstractTransaction:
         generator: { strategy: AUTO }
   fields:
     referenceId:
-      type: integer
+      type: string
     amount:
       type: float
     currency:
