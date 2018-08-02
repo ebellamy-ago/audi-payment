@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\TransactionHistory;
+use Mullenlowe\CommonBundle\Component\AMQP\CrudProducer;
 use Mullenlowe\PayPluginBundle\Model\AbstractTransaction;
 use Mullenlowe\PayPluginBundle\Model\MagellanStatusTransaction;
 use Mullenlowe\PayPluginBundle\Model\StatusTransactionInterface;
@@ -277,6 +278,11 @@ class PaymentController extends MullenloweRestController
                 sprintf('No transaction found with the reference_id "%s"', $referenceId)
             );
         }
+
+        /** @var CrudProducer $paymentProducer */
+        $paymentProducer = $this->get('old_sound_rabbit_mq.payment_crud_producer');
+        $paymentProducer->setContentType('application/json');
+        $paymentProducer->publish(json_encode(['reference_id' => $transaction->getReferenceId()]));
 
         $response = [
             'reference_id' => $transaction->getReferenceId(),

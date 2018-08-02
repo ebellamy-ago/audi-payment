@@ -18,3 +18,8 @@ parameters:
 
     payment_magellan_url: https://epay.magellanset.com/api/merchantAuthenticateServlet
     payment_magellan_secret: serhdfbv985619431qsqdcds
+
+    # rabbitMQ
+    rabbitmq_host: rabbitmq5.audi.dev.agence-one.net
+    rabbitmq_user: guest
+    rabbitmq_password: guest
