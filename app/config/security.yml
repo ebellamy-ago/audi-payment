@@ -1,20 +1,24 @@
+# To get started with security, check out the documentation:
+# https://symfony.com/doc/current/security.html
 security:
+
+    # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
-        auth_user_provider:
-            id: Mullenlowe\CommonBundle\Security\User\AuthUserProvider
+        in_memory:
+            memory: ~
 
     firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
         dev:
-            pattern: ^/
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
-        api:
-            pattern:  ^/
-            stateless: true
-            anonymous: true
-            guard:
-                authenticators:
-                    - Mullenlowe\CommonBundle\Security\Guard\JWTTokenAuthenticator
+        main:
+            anonymous: ~
+            # activate different ways to authenticate
 
-    access_control:
-        - { path: ^/, role: IS_AUTHENTICATED_FULLY }
+            # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
+            #http_basic: ~
+
+            # https://symfony.com/doc/current/security/form_login_setup.html
+            #form_login: ~
