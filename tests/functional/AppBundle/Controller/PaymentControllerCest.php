@@ -42,6 +42,7 @@ class PaymentControllerCest
             'url_cancel' => 'https://audi-url.com/cancel1',
             'url_post_data' => 'https://audi-url.com/post_data1',
             'url_receipt' => 'https://audi-url.com/receipt1',
+            'origin' => 'etron'
         ];
 
         unset($parameters[$example[0]]);
@@ -53,14 +54,15 @@ class PaymentControllerCest
     }
 
     /**
-     * @dataProvider getCancelRequestParameters
+     * @dataProvider updateRequestParameters
      */
-    public function tryToCancelATransaction(\FunctionalTester  $I, Scenario $scenario, Example $example)
+    public function testUpdateTransaction(\FunctionalTester  $I, Scenario $scenario, Example $example)
     {
         $parameters = [
             'currency' => 'EUR',
             'provider' => 'magellan',
-            'reference_id' => '126460319',
+            'reference_id' => 123456789,
+            'transaction_id' => 111111111,
             'amount' => '100',
             'lastname' => 'JOHN',
             'phone' => '0102030405',
@@ -71,25 +73,26 @@ class PaymentControllerCest
             'url_cancel' => 'https://audi-url.com/cancel1',
             'url_post_data' => 'https://audi-url.com/post_data1',
             'url_receipt' => 'https://audi-url.com/receipt1',
+            'origin' => 'etron'
         ];
 
         $I->amOnPage('/');
         $I->sendPOST('/', $parameters);
 
-        $I->amOnPage('/cancel/magellan_status');
-        $I->sendPOST('/cancel/magellan_status', $example->getIterator()->getArrayCopy());
-        $I->seeResponseIsJson('{"message": "The transaction \"126460319\" was correctly canceled"}');
+        $I->amOnPage('/transaction/magellan-status');
+        $I->sendPOST('/transaction/magellan-status', $example->getIterator()->getArrayCopy());
+        $I->seeResponseIsJson('{"message": "The transaction has been successfully completed"}');
     }
 
-    public function getCancelRequestParameters()
+    public function updateRequestParameters()
     {
         return [
             [
-                'reference_id' => 126460319,
-                'result_label' => 'Operation cancelled',
-                'transaction_id' => 12454578878,
-                'auth_code' => 123,
-                'result_code' => 'USER_CANCEL',
+                'reference_id' => 123456789,
+                'result_label' => 'OK',
+                'transaction_id' => 111111111,
+                'auth_code' => '',
+                'result_code' => 'OK',
             ]
         ];
     }
@@ -131,6 +134,7 @@ class PaymentControllerCest
                 'url_cancel' => 'https://audi-url.com/cancel1',
                 'url_post_data' => 'https://audi-url.com/post_data1',
                 'url_receipt' => 'https://audi-url.com/receipt1',
+                'origin' => 'etron'
             ],
             [
                 'file' => 'payment_02.html',
@@ -147,6 +151,7 @@ class PaymentControllerCest
                 'url_cancel' => 'https://audi-url.com/cancel2',
                 'url_post_data' => 'https://audi-url.com/post_data2',
                 'url_receipt' => 'https://audi-url.com/receipt2',
+                'origin' => 'etron'
             ]
         ];
     }

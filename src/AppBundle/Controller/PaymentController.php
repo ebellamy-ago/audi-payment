@@ -142,60 +142,53 @@ class PaymentController extends MullenloweRestController
     }
 
     /**
-     * @Rest\Post("/cancel/{provider}", name="_payment")
+     * @Rest\Post("/transaction/{provider}", name="_payment")
      * @ParamConverter(name="transactionStatus", converter="transaction_converter")
      * @SWG\Post(
-     *     path="/cancel/{provider}",
-     *     description="Cancel a transaction by reference_id.",
-     *     @SWG\Parameter(
-     *         name="provider",
-     *         type="string",
-     *         required=true,
-     *         description="Name of the payment provider (ex: magellan).",
-     *         in="path"
-     *     ),
+     *     path="/transaction/{provider}",
+     *     description="Update a transaction by reference_id.",
      *     @SWG\Parameter(
      *         name="reference_id",
      *         type="string",
-     *         required=false,
+     *         required=true,
      *         in="query",
      *         description="Only for Magellan provider."
      *     ),
      *     @SWG\Parameter(
      *         name="result_label",
      *         type="string",
-     *         required=false,
+     *         required=true,
      *         in="query",
      *         description="Only for Magellan provider."
      *     ),
      *     @SWG\Parameter(
      *         name="transaction_id",
      *         type="string",
-     *         required=false,
+     *         required=true,
      *         in="query",
      *         description="Only for Magellan provider."
      *     ),
      *     @SWG\Parameter(
      *         name="auth_code",
      *         type="string",
-     *         required=false,
+     *         required=true,
      *         in="query",
      *         description="Only for Magellan provider."
      *     ),
      *     @SWG\Parameter(
      *         name="result_code",
      *         type="string",
-     *         required=false,
+     *         required=true,
      *         in="query",
      *         description="Only for Magellan provider."
      *     ),
      *     @SWG\Response(
      *         response=200,
-     *         description="A JSON file with confirmation message for cancel."
+     *         description="A JSON file with message result for payment."
      *     )
      * )
      */
-    public function cancelAction(StatusTransactionInterface $transactionStatus)
+    public function transactionAction(StatusTransactionInterface $transactionStatus)
     {
         $referenceId = $transactionStatus->getReferenceId();
         $manager = $this->getDoctrine()->getManager();
