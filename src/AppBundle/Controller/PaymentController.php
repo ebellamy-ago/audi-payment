@@ -40,91 +40,91 @@ class PaymentController extends MullenloweRestController
      *         type="string",
      *         required=false,
      *         in="query",
-     *         description="Only for Magellan provider."
+     *         description="Currency in which the transaction is established"
      *     ),
      *     @SWG\Parameter(
      *         name="reference_id",
      *         type="string",
      *         required=false,
      *         in="query",
-     *         description="Only for Magellan provider."
+     *         description="Own reference transaction to the merchant"
      *     ),
      *     @SWG\Parameter(
      *         name="amount",
      *         type="integer",
      *         required=false,
      *         in="query",
-     *         description="Only for Magellan provider."
+     *         description="Transaction amount"
      *     ),
      *     @SWG\Parameter(
      *         name="origin",
      *         type="string",
      *         required=false,
      *         in="query",
-     *         description="Only for Magellan provider."
+     *         description="Front origin"
      *     ),
      *     @SWG\Parameter(
      *         name="lastname",
      *         type="string",
      *         required=false,
      *         in="query",
-     *         description="Only for Magellan provider."
+     *         description="The last name of the buyer"
      *     ),
      *     @SWG\Parameter(
      *         name="phone",
      *         type="string",
      *         required=false,
      *         in="query",
-     *         description="Only for Magellan provider."
+     *         description="The name of the phone"
      *     ),
      *     @SWG\Parameter(
      *         name="name",
      *         type="string",
      *         required=false,
      *         in="query",
-     *         description="Only for Magellan provider."
+     *         description="The name of the buyer"
      *     ),
      *     @SWG\Parameter(
      *         name="merchant_login",
      *         type="string",
      *         required=false,
      *         in="query",
-     *         description="Only for Magellan provider."
+     *         description="Merchant login"
      *     ),
      *     @SWG\Parameter(
      *         name="merchant_pwd",
      *         type="string",
      *         required=false,
      *         in="query",
-     *         description="Only for Magellan provider."
+     *         description="Merchant password"
      *     ),
      *     @SWG\Parameter(
      *         name="merchant_id",
      *         type="string",
      *         required=false,
      *         in="query",
-     *         description="Only for Magellan provider."
+     *         description="Merchant id"
      *     ),
      *     @SWG\Parameter(
      *         name="url_cancel",
      *         type="string",
      *         required=false,
      *         in="query",
-     *         description="Only for Magellan provider."
+     *         description="Only for Magellan provider, set to none"
      *     ),
      *     @SWG\Parameter(
      *         name="url_post_data",
      *         type="string",
      *         required=false,
      *         in="query",
-     *         description="Only for Magellan provider."
+     *         description="Only for Magellan provider, set to none"
      *     ),
      *     @SWG\Parameter(
      *         name="url_receipt",
      *         type="string",
      *         required=false,
      *         in="query",
-     *         description="Only for Magellan provider."
+     *         description="Only for Magellan provider, set to none"
      *     ),
      *     @SWG\Response(
      *         response=200,
@@ -144,9 +144,7 @@ class PaymentController extends MullenloweRestController
 
         $provider = $providers->getByTransaction($transaction);
 
-        return new JsonResponse([
-            'content' =>  $provider->retrievePaymentInformations($transaction)->getContent()
-        ]);
+        return $this->createView(['content' =>  $provider->retrievePaymentInformations($transaction)->getContent()]);
     }
 
     /**
@@ -160,35 +158,35 @@ class PaymentController extends MullenloweRestController
      *         type="string",
      *         required=true,
      *         in="query",
-     *         description="Only for Magellan provider."
+     *         description="Magellan provider, external reference number transmitted by the client"
      *     ),
      *     @SWG\Parameter(
      *         name="result_label",
      *         type="string",
      *         required=true,
      *         in="query",
-     *         description="Only for Magellan provider."
+     *         description="Magellan provider, Explanatory text on the back"
      *     ),
      *     @SWG\Parameter(
      *         name="transaction_id",
      *         type="string",
      *         required=true,
      *         in="query",
-     *         description="Only for Magellan provider."
+     *         description="Magellan provider, Tracking transaction ID"
      *     ),
      *     @SWG\Parameter(
      *         name="auth_code",
      *         type="string",
      *         required=true,
      *         in="query",
-     *         description="Only for Magellan provider."
+     *         description="Magellan provider, authorization number of the transaction"
      *     ),
      *     @SWG\Parameter(
      *         name="result_code",
      *         type="string",
      *         required=true,
      *         in="query",
-     *         description="Only for Magellan provider."
+     *         description="Magellan provider, return code"
      *     ),
      *     @SWG\Response(
      *         response=200,
@@ -215,7 +213,7 @@ class PaymentController extends MullenloweRestController
         $manager->persist(new TransactionHistory($referenceId, $transactionStatus->getStatus()));
         $manager->flush();
 
-        return new JsonResponse(['message' => $transactionStatus->getStatusMessage()]);
+        return $this->createView(['message' => $transactionStatus->getStatusMessage()]);
     }
 
     /**
@@ -229,35 +227,35 @@ class PaymentController extends MullenloweRestController
      *         type="string",
      *         required=true,
      *         in="query",
-     *         description="Only for Magellan provider."
+     *         description="Magellan provider, external reference number transmitted by the client"
      *     ),
      *     @SWG\Parameter(
      *         name="result_label",
      *         type="string",
      *         required=true,
      *         in="query",
-     *         description="Only for Magellan provider."
+     *         description="Magellan provider, Explanatory text on the back"
      *     ),
      *     @SWG\Parameter(
      *         name="transaction_id",
      *         type="string",
      *         required=true,
      *         in="query",
-     *         description="Only for Magellan provider."
+     *         description="Magellan provider, Tracking transaction ID"
      *     ),
      *     @SWG\Parameter(
      *         name="auth_code",
      *         type="string",
      *         required=true,
      *         in="query",
-     *         description="Only for Magellan provider."
+     *         description="Magellan provider, authorization number of the transaction"
      *     ),
      *     @SWG\Parameter(
      *         name="result_code",
      *         type="string",
      *         required=true,
      *         in="query",
-     *         description="Only for Magellan provider."
+     *         description="Magellan provider, return code"
      *     ),
      *     @SWG\Response(
      *         response=200,
@@ -281,8 +279,7 @@ class PaymentController extends MullenloweRestController
 
         /** @var CrudProducer $paymentProducer */
         $paymentProducer = $this->get('old_sound_rabbit_mq.payment_crud_producer');
-        $paymentProducer->setContentType('application/json');
-        $paymentProducer->publish(json_encode(['reference_id' => $transaction->getReferenceId()]));
+        $paymentProducer->publishJson(['reference_id' => $transaction->getReferenceId()], self::CONTEXT, 'update');
 
         $response = [
             'reference_id' => $transaction->getReferenceId(),
@@ -291,6 +288,6 @@ class PaymentController extends MullenloweRestController
             'message' => $transactionStatus->getStatusMessage(),
         ];
 
-        return new JsonResponse($response);
+        return $this->createView($response);
     }
 }
