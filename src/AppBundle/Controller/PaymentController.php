@@ -75,7 +75,7 @@ class PaymentController extends MullenloweRestController
      *         type="string",
      *         required=false,
      *         in="query",
-     *         description="The name of the phone"
+     *         description="The buyer phone"
      *     ),
      *     @SWG\Parameter(
      *         name="name",
