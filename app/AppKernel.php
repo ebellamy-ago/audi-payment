@@ -21,7 +21,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Mullenlowe\PayPluginBundle\PayPluginBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
-            new HadesArchitect\JsonSchemaBundle\JsonSchemaBundle(),
+            new OldSound\RabbitMqBundle\OldSoundRabbitMqBundle(),
 
             new AppBundle\AppBundle(),
         ];

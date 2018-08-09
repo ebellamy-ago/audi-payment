@@ -1,0 +1,41 @@
+# RabbitMQ configuration
+old_sound_rabbit_mq:
+    connections:
+        default:
+            host:     '%rabbitmq_host%'
+            port:     5672
+            user:     '%rabbitmq_user%'
+            password: '%rabbitmq_password%'
+            vhost:    '/'
+            lazy:     false
+            connection_timeout: 3
+            read_write_timeout: 3
+
+            # requires php-amqplib v2.4.1+ and PHP5.4+
+            keepalive: false
+
+            # requires php-amqplib v2.4.1+
+            heartbeat: 0
+
+            #requires php_sockets.dll
+            #use_socket: true # default false
+        another:
+            # A different (unused) connection defined by an URL. One can omit all parts,
+            # except the scheme (amqp:). If both segment in the URL and a key value (see above)
+            # are given the value from the URL takes precedence.
+            # See https://www.rabbitmq.com/uri-spec.html on how to encode values.
+            url: 'amqp://%rabbitmq_user%:%rabbitmq_password%@%rabbitmq_host%/vhost?lazy=1&connection_timeout=6'
+
+    producers:
+        payment_crud:
+            connection: 'default'
+            class: Mullenlowe\CommonBundle\Component\AMQP\CrudProducer
+            exchange_options:
+                name: 'CRUD'
+                type: 'direct'
+
+mullenlowe_common:
+    rabbitmq_crud_publisher:
+        producer: "old_sound_rabbit_mq.payment_crud_producer"
+        mapping:
+            - { context: 'Payment', routing_key: 'crud.payment' }
