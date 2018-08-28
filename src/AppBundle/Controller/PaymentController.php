@@ -28,6 +28,8 @@ class PaymentController extends MullenloweRestController
      * @SWG\Post(
      *     path="/",
      *     description="Retrieve payments informations like a payment page.",
+     *     operationId="retrievePaymentsInformations",
+     *     tags={"Payment"},
      *     @SWG\Parameter(
      *         name="provider",
      *         type="string",
@@ -38,70 +40,70 @@ class PaymentController extends MullenloweRestController
      *     @SWG\Parameter(
      *         name="currency",
      *         type="string",
-     *         required=false,
+     *         required=true,
      *         in="query",
      *         description="Currency in which the transaction is established"
      *     ),
      *     @SWG\Parameter(
      *         name="reference_id",
      *         type="string",
-     *         required=false,
+     *         required=true,
      *         in="query",
      *         description="Own reference transaction to the merchant"
      *     ),
      *     @SWG\Parameter(
      *         name="amount",
      *         type="integer",
-     *         required=false,
+     *         required=true,
      *         in="query",
      *         description="Transaction amount"
      *     ),
      *     @SWG\Parameter(
      *         name="origin",
      *         type="string",
-     *         required=false,
+     *         required=true,
      *         in="query",
      *         description="Front origin"
      *     ),
      *     @SWG\Parameter(
      *         name="lastname",
      *         type="string",
-     *         required=false,
+     *         required=true,
      *         in="query",
      *         description="The last name of the buyer"
      *     ),
      *     @SWG\Parameter(
      *         name="phone",
      *         type="string",
-     *         required=false,
+     *         required=true,
      *         in="query",
      *         description="The buyer phone"
      *     ),
      *     @SWG\Parameter(
      *         name="name",
      *         type="string",
-     *         required=false,
+     *         required=true,
      *         in="query",
      *         description="The name of the buyer"
      *     ),
      *     @SWG\Parameter(
      *         name="merchant_login",
      *         type="string",
-     *         required=false,
+     *         required=true,
      *         in="query",
      *         description="Merchant login"
      *     ),
      *     @SWG\Parameter(
      *         name="merchant_pwd",
      *         type="string",
-     *         required=false,
+     *         required=true,
      *         in="query",
      *         description="Merchant password"
      *     ),
      *     @SWG\Parameter(
      *         name="merchant_id",
      *         type="string",
-     *         required=false,
+     *         required=true,
      *         in="query",
      *         description="Merchant id"
      *     ),
@@ -129,7 +131,20 @@ class PaymentController extends MullenloweRestController
      *     @SWG\Response(
      *         response=200,
      *         description="A JSON file with an element 'content'."
+     *         @SWG\Schema(
+     *             allOf={
+     *                 @SWG\Definition(ref="#/definitions/Context"),
+     *                 @SWG\Definition(
+     *                     @SWG\Property(property="data", ref="#/definitions/Response"),
+     *                 )
+     *             }
+     *         )
      *     )
+     *     @SWG\Response(
+     *         response=500,
+     *         description="retrieving data error",
+     *         @SWG\Schema(ref="#/definitions/Error")
+     *    )
      * )
      */
     public function getInformationsAction(AbstractTransaction $transaction, Providers $providers)
@@ -153,6 +168,15 @@ class PaymentController extends MullenloweRestController
      * @SWG\Post(
      *     path="/transaction/{provider}",
      *     description="Update a transaction by reference_id.",
+     *     operationId="UpdateTransactionByReferenceId",
+     *     tags={"Payment"},
+     *     @SWG\Parameter(
+     *         name="provider",
+     *         type="string",
+     *         required=true,
+     *         in="path",
+     *         description="Payment provider"
+     *     ),
      *     @SWG\Parameter(
      *         name="reference_id",
      *         type="string",
@@ -191,6 +215,24 @@ class PaymentController extends MullenloweRestController
      *     @SWG\Response(
      *         response=200,
      *         description="A JSON file with message result for payment."
+     *         @SWG\Schema(
+     *             allOf={
+     *                 @SWG\Definition(ref="#/definitions/Context"),
+     *                 @SWG\Definition(
+     *                     @SWG\Property(property="data", ref="#/definitions/TransactionResponse"),
+     *                 )
+     *             }
+     *         )
+     *     )
+     *     @SWG\Response(
+     *         response=404,
+     *         description="not transaction found",
+     *         @SWG\Schema(ref="#/definitions/Error")
+     *     ),
+     *     @SWG\Response(
+     *         response=500,
+     *         description="updating transaction error",
+     *         @SWG\Schema(ref="#/definitions/Error")
      *     )
      * )
      */
@@ -222,6 +264,15 @@ class PaymentController extends MullenloweRestController
      * @SWG\Post(
      *     path="/receipt/{provider}",
      *     description="Url receipt.",
+     *     operationId="receiptTransactionUrl",
+     *     tags={"Payment"},
+     *     @SWG\Parameter(
+     *         name="provider",
+     *         type="string",
+     *         required=true,
+     *         in="path",
+     *         description="Payment provider"
+     *     ),
      *     @SWG\Parameter(
      *         name="reference_id",
      *         type="string",
@@ -260,6 +311,24 @@ class PaymentController extends MullenloweRestController
      *     @SWG\Response(
      *         response=200,
      *         description="A JSON file with message and origin front."
+     *         @SWG\Schema(
+     *             allOf={
+     *                 @SWG\Definition(ref="#/definitions/Context"),
+     *                 @SWG\Definition(
+     *                     @SWG\Property(property="data", ref="#/definitions/ReceiptResponse"),
+     *                 )
+     *             }
+     *         )
+     *     )
+     *     @SWG\Response(
+     *         response=404,
+     *         description="not found",
+     *         @SWG\Schema(ref="#/definitions/Error")
+     *     ),
+     *     @SWG\Response(
+     *         response=500,
+     *         description="updating transaction error",
+     *         @SWG\Schema(ref="#/definitions/Error")
      *     )
      * )
      */
