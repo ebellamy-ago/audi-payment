@@ -13,6 +13,8 @@ use Swagger\Annotations as SWG;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use Mullenlowe\CommonBundle\Controller\MullenloweRestController;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class PaymentController
@@ -130,7 +132,7 @@ class PaymentController extends MullenloweRestController
      *     ),
      *     @SWG\Response(
      *         response=200,
-     *         description="A JSON file with an element 'content'."
+     *         description="A JSON file with an element 'content'.",
      *         @SWG\Schema(
      *             allOf={
      *                 @SWG\Definition(ref="#/definitions/Context"),
@@ -139,7 +141,7 @@ class PaymentController extends MullenloweRestController
      *                 )
      *             }
      *         )
-     *     )
+     *     ),
      *     @SWG\Response(
      *         response=500,
      *         description="retrieving data error",
@@ -214,7 +216,7 @@ class PaymentController extends MullenloweRestController
      *     ),
      *     @SWG\Response(
      *         response=200,
-     *         description="A JSON file with message result for payment."
+     *         description="A JSON file with message result for payment.",
      *         @SWG\Schema(
      *             allOf={
      *                 @SWG\Definition(ref="#/definitions/Context"),
@@ -223,7 +225,7 @@ class PaymentController extends MullenloweRestController
      *                 )
      *             }
      *         )
-     *     )
+     *     ),
      *     @SWG\Response(
      *         response=404,
      *         description="not transaction found",
@@ -310,7 +312,7 @@ class PaymentController extends MullenloweRestController
      *     ),
      *     @SWG\Response(
      *         response=200,
-     *         description="A JSON file with message and origin front."
+     *         description="A JSON file with message and origin front.",
      *         @SWG\Schema(
      *             allOf={
      *                 @SWG\Definition(ref="#/definitions/Context"),
@@ -319,7 +321,7 @@ class PaymentController extends MullenloweRestController
      *                 )
      *             }
      *         )
-     *     )
+     *     ),
      *     @SWG\Response(
      *         response=404,
      *         description="not found",
