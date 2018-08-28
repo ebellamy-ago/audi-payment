@@ -135,7 +135,7 @@ class PaymentController extends MullenloweRestController
      *             allOf={
      *                 @SWG\Definition(ref="#/definitions/Context"),
      *                 @SWG\Definition(
-     *                     @SWG\Property(property="data", ref="#/definitions/Response"),
+     *                     @SWG\Property(property="data", ref="#/definitions/TransactionData"),
      *                 )
      *             }
      *         )

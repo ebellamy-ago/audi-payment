@@ -61,6 +61,12 @@ class SwaggerDefinitions
      *     ),
      *
      *     @SWG\Definition(
+     *         definition="TransactionData",
+     *         @SWG\Property(property="content", type="string"),
+     *         required={"content"}
+     *     ),
+     *
+     *     @SWG\Definition(
      *         definition="TransactionResponse",
      *         @SWG\Property(property="message", type="string"),
      *         required={"message"}
