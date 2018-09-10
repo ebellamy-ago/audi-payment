@@ -63,7 +63,7 @@ doctrine:
         mappings:
             PayPluginBundle:
                 type: yml
-                dir: 'src/AppBundle/Resources/config/doctrine/PaymentTransactions'
+                dir: '%kernel.project_dir%/src/AppBundle/Resources/config/doctrine/PaymentTransactions'
                 prefix: Mullenlowe\PayPluginBundle\Model
                 is_bundle: false
             AppBundle:
