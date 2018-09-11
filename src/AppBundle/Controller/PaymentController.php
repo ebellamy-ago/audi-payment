@@ -3,18 +3,22 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\TransactionHistory;
+use FOS\RestBundle\Controller\Annotations as Rest;
+use FOS\RestBundle\View\View;
 use Mullenlowe\CommonBundle\Component\AMQP\CrudProducer;
+use Mullenlowe\CommonBundle\Controller\MullenloweRestController;
+use Mullenlowe\CommonBundle\Exception\BadRequestHttpException;
+use Mullenlowe\CommonBundle\Security\Guard\JWTTokenAuthenticator;
+use Mullenlowe\PayPluginBundle\Exceptions\UndefinedProviderException;
 use Mullenlowe\PayPluginBundle\Model\AbstractTransaction;
 use Mullenlowe\PayPluginBundle\Model\MagellanStatusTransaction;
 use Mullenlowe\PayPluginBundle\Model\StatusTransactionInterface;
 use Mullenlowe\PayPluginBundle\Service\Provider\Providers;
+use Psr\Log\LoggerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Swagger\Annotations as SWG;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use FOS\RestBundle\Controller\Annotations as Rest;
-use Mullenlowe\CommonBundle\Controller\MullenloweRestController;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\UriSigner;
 
 /**
  * Class PaymentController
@@ -23,6 +27,23 @@ use Symfony\Component\HttpFoundation\Response;
 class PaymentController extends MullenloweRestController
 {
     const CONTEXT = 'Payment';
+
+    /**
+     * @var UriSigner
+     */
+    private $uriSigner;
+
+    /**
+     * PaymentController constructor.
+     * @param JWTTokenAuthenticator $authenticator
+     * @param UriSigner             $uriSigner
+     */
+    public function __construct(JWTTokenAuthenticator $authenticator, UriSigner $uriSigner)
+    {
+        parent::__construct($authenticator);
+
+        $this->uriSigner = $uriSigner;
+    }
 
     /**
      * @Rest\Post("/", name="_payment")
@@ -34,101 +55,129 @@ class PaymentController extends MullenloweRestController
      *     tags={"Payment"},
      *     @SWG\Parameter(
      *         name="provider",
-     *         type="string",
      *         required=true,
      *         description="Name of the payment provider (ex: magellan).",
-     *         in="query"
+     *         in="body",
+     *         @SWG\Schema(
+     *             @SWG\Property(property="provider", type="string")
+     *         )
      *     ),
      *     @SWG\Parameter(
      *         name="currency",
-     *         type="string",
      *         required=true,
-     *         in="query",
-     *         description="Currency in which the transaction is established"
+     *         in="body",
+     *         description="Currency in which the transaction is established",
+     *         @SWG\Schema(
+     *             @SWG\Property(property="currency", type="string")
+     *         )
      *     ),
      *     @SWG\Parameter(
      *         name="reference_id",
-     *         type="string",
      *         required=true,
-     *         in="query",
-     *         description="Own reference transaction to the merchant"
+     *         in="body",
+     *         description="Own reference transaction to the merchant",
+     *         @SWG\Schema(
+     *             @SWG\Property(property="reference_id", type="string")
+     *         )
      *     ),
      *     @SWG\Parameter(
      *         name="amount",
-     *         type="integer",
      *         required=true,
-     *         in="query",
-     *         description="Transaction amount"
+     *         in="body",
+     *         description="Transaction amount",
+     *         @SWG\Schema(
+     *             @SWG\Property(property="amount", type="integer")
+     *         )
      *     ),
      *     @SWG\Parameter(
      *         name="origin",
-     *         type="string",
      *         required=true,
-     *         in="query",
-     *         description="Front origin"
+     *         in="body",
+     *         description="Front origin",
+     *         @SWG\Schema(
+     *             @SWG\Property(property="origin", type="string")
+     *         )
      *     ),
      *     @SWG\Parameter(
      *         name="lastname",
-     *         type="string",
      *         required=true,
-     *         in="query",
-     *         description="The last name of the buyer"
+     *         in="body",
+     *         description="The last name of the buyer",
+     *         @SWG\Schema(
+     *             @SWG\Property(property="lastname", type="string")
+     *         )
      *     ),
      *     @SWG\Parameter(
      *         name="phone",
-     *         type="string",
      *         required=true,
-     *         in="query",
-     *         description="The buyer phone"
+     *         in="body",
+     *         description="The buyer phone",
+     *         @SWG\Schema(
+     *             @SWG\Property(property="phone", type="string")
+     *         )
      *     ),
      *     @SWG\Parameter(
      *         name="name",
-     *         type="string",
      *         required=true,
-     *         in="query",
-     *         description="The name of the buyer"
+     *         in="body",
+     *         description="The name of the buyer",
+     *         @SWG\Schema(
+     *             @SWG\Property(property="name", type="string")
+     *         )
      *     ),
      *     @SWG\Parameter(
      *         name="merchant_login",
-     *         type="string",
      *         required=true,
-     *         in="query",
-     *         description="Merchant login"
+     *         in="body",
+     *         description="Merchant login",
+     *         @SWG\Schema(
+     *             @SWG\Property(property="merchant_login", type="string")
+     *         )
      *     ),
      *     @SWG\Parameter(
      *         name="merchant_pwd",
-     *         type="string",
      *         required=true,
-     *         in="query",
-     *         description="Merchant password"
+     *         in="body",
+     *         description="Merchant password",
+     *         @SWG\Schema(
+     *             @SWG\Property(property="merchant_pwd", type="string")
+     *         )
      *     ),
      *     @SWG\Parameter(
      *         name="merchant_id",
-     *         type="string",
      *         required=true,
-     *         in="query",
-     *         description="Merchant id"
+     *         in="body",
+     *         description="Merchant id",
+     *         @SWG\Schema(
+     *             @SWG\Property(property="merchant_id", type="string")
+     *         )
      *     ),
      *     @SWG\Parameter(
      *         name="url_cancel",
-     *         type="string",
-     *         required=false,
-     *         in="query",
-     *         description="Only for Magellan provider, set to none"
+     *         required=true,
+     *         in="body",
+     *         description="Only for Magellan provider, set to none",
+     *         @SWG\Schema(
+     *             @SWG\Property(property="url_cancel", type="string")
+     *         )
      *     ),
      *     @SWG\Parameter(
      *         name="url_post_data",
-     *         type="string",
-     *         required=false,
-     *         in="query",
-     *         description="Only for Magellan provider, set to none"
+     *         required=true,
+     *         in="body",
+     *         description="Only for Magellan provider, set to none",
+     *         @SWG\Schema(
+     *             @SWG\Property(property="url_post_data", type="string")
+     *         )
      *     ),
      *     @SWG\Parameter(
      *         name="url_receipt",
-     *         type="string",
-     *         required=false,
-     *         in="query",
-     *         description="Only for Magellan provider, set to none"
+     *         required=true,
+     *         in="body",
+     *         description="Only for Magellan provider, set to none",
+     *         @SWG\Schema(
+     *             @SWG\Property(property="url_receipt", type="string")
+     *         )
      *     ),
      *     @SWG\Response(
      *         response=200,
@@ -148,12 +197,28 @@ class PaymentController extends MullenloweRestController
      *         @SWG\Schema(ref="#/definitions/Error")
      *    )
      * )
+     *
+     * @param AbstractTransaction $transaction
+     * @param Providers           $providers
+     * @param Request             $request
+     * @return View
+     * @throws BadRequestHttpException|UndefinedProviderException
      */
-    public function getInformationsAction(AbstractTransaction $transaction, Providers $providers)
+    public function getInformationsAction(AbstractTransaction $transaction, Providers $providers, Request $request)
     {
+        if (false === $this->uriSigner->check($request->getRequestUri())) {
+            throw new BadRequestHttpException(
+                static::CONTEXT,
+                'Incoming request not correctly signed'
+            );
+        }
+
         $manager = $this->getDoctrine()->getManager();
 
-        $transactionHistory = new TransactionHistory($transaction->getReferenceId(), MagellanStatusTransaction::INITIALIZED);
+        $transactionHistory = new TransactionHistory(
+            $transaction->getReferenceId(),
+            MagellanStatusTransaction::INITIALIZED
+        );
 
         $manager->persist($transaction);
         $manager->persist($transactionHistory);
@@ -161,7 +226,9 @@ class PaymentController extends MullenloweRestController
 
         $provider = $providers->getByTransaction($transaction);
 
-        return $this->createView(['content' =>  $provider->retrievePaymentInformations($transaction)->getContent()]);
+        return $this->createView([
+            'content' =>  $provider->retrievePaymentInformations($transaction)->getContent(),
+        ]);
     }
 
     /**
@@ -237,6 +304,9 @@ class PaymentController extends MullenloweRestController
      *         @SWG\Schema(ref="#/definitions/Error")
      *     )
      * )
+     *
+     * @param StatusTransactionInterface $transactionStatus
+     * @return View
      */
     public function transactionAction(StatusTransactionInterface $transactionStatus)
     {
@@ -333,6 +403,9 @@ class PaymentController extends MullenloweRestController
      *         @SWG\Schema(ref="#/definitions/Error")
      *     )
      * )
+     *
+     * @param StatusTransactionInterface $transactionStatus
+     * @return View
      */
     public function receiptAction(StatusTransactionInterface $transactionStatus)
     {
