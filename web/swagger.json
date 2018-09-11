@@ -1,164 +1,519 @@
 {
     "swagger": "2.0",
+    "info": {
+        "title": "Payment Api",
+        "version": "1.0.0"
+    },
     "host": "api5.audi.dev.agence-one.net",
+    "basePath": "/payment/dev/",
+    "schemes": [
+        "http"
+    ],
+    "produces": [
+        "application/json"
+    ],
     "paths": {
         "/": {
             "post": {
+                "tags": [
+                    "Payment"
+                ],
                 "description": "Retrieve payments informations like a payment page.",
+                "operationId": "retrievePaymentsInformations",
                 "parameters": [
                     {
                         "name": "provider",
-                        "in": "query",
+                        "in": "body",
                         "description": "Name of the payment provider (ex: magellan).",
                         "required": true,
-                        "type": "string"
+                        "schema": {
+                            "properties": {
+                                "provider": {
+                                    "type": "string"
+                                }
+                            }
+                        }
                     },
                     {
                         "name": "currency",
-                        "in": "query",
-                        "description": "Only for Magellan provider.",
-                        "required": false,
-                        "type": "string"
+                        "in": "body",
+                        "description": "Currency in which the transaction is established",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "currency": {
+                                    "type": "string"
+                                }
+                            }
+                        }
                     },
                     {
                         "name": "reference_id",
-                        "in": "query",
-                        "description": "Only for Magellan provider.",
-                        "required": false,
-                        "type": "string"
+                        "in": "body",
+                        "description": "Own reference transaction to the merchant",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "reference_id": {
+                                    "type": "string"
+                                }
+                            }
+                        }
                     },
                     {
                         "name": "amount",
-                        "in": "query",
-                        "description": "Only for Magellan provider.",
-                        "required": false,
-                        "type": "integer"
+                        "in": "body",
+                        "description": "Transaction amount",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "amount": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "origin",
+                        "in": "body",
+                        "description": "Front origin",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "origin": {
+                                    "type": "string"
+                                }
+                            }
+                        }
                     },
                     {
                         "name": "lastname",
-                        "in": "query",
-                        "description": "Only for Magellan provider.",
-                        "required": false,
-                        "type": "string"
+                        "in": "body",
+                        "description": "The last name of the buyer",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "lastname": {
+                                    "type": "string"
+                                }
+                            }
+                        }
                     },
                     {
                         "name": "phone",
-                        "in": "query",
-                        "description": "Only for Magellan provider.",
-                        "required": false,
-                        "type": "string"
+                        "in": "body",
+                        "description": "The buyer phone",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "phone": {
+                                    "type": "string"
+                                }
+                            }
+                        }
                     },
                     {
                         "name": "name",
-                        "in": "query",
-                        "description": "Only for Magellan provider.",
-                        "required": false,
-                        "type": "string"
+                        "in": "body",
+                        "description": "The name of the buyer",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                }
+                            }
+                        }
                     },
                     {
                         "name": "merchant_login",
-                        "in": "query",
-                        "description": "Only for Magellan provider.",
-                        "required": false,
-                        "type": "string"
+                        "in": "body",
+                        "description": "Merchant login",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "merchant_login": {
+                                    "type": "string"
+                                }
+                            }
+                        }
                     },
                     {
                         "name": "merchant_pwd",
-                        "in": "query",
-                        "description": "Only for Magellan provider.",
-                        "required": false,
-                        "type": "string"
+                        "in": "body",
+                        "description": "Merchant password",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "merchant_pwd": {
+                                    "type": "string"
+                                }
+                            }
+                        }
                     },
                     {
                         "name": "merchant_id",
-                        "in": "query",
-                        "description": "Only for Magellan provider.",
-                        "required": false,
-                        "type": "string"
+                        "in": "body",
+                        "description": "Merchant id",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "merchant_id": {
+                                    "type": "string"
+                                }
+                            }
+                        }
                     },
                     {
                         "name": "url_cancel",
-                        "in": "query",
-                        "description": "Only for Magellan provider.",
-                        "required": false,
-                        "type": "string"
+                        "in": "body",
+                        "description": "Only for Magellan provider, set to none",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "url_cancel": {
+                                    "type": "string"
+                                }
+                            }
+                        }
                     },
                     {
                         "name": "url_post_data",
-                        "in": "query",
-                        "description": "Only for Magellan provider.",
-                        "required": false,
-                        "type": "string"
+                        "in": "body",
+                        "description": "Only for Magellan provider, set to none",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "url_post_data": {
+                                    "type": "string"
+                                }
+                            }
+                        }
                     },
                     {
                         "name": "url_receipt",
-                        "in": "query",
-                        "description": "Only for Magellan provider.",
-                        "required": false,
-                        "type": "string"
+                        "in": "body",
+                        "description": "Only for Magellan provider, set to none",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "url_receipt": {
+                                    "type": "string"
+                                }
+                            }
+                        }
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "A JSON file with an element 'content'."
+                        "description": "A JSON file with an element 'content'.",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/Context"
+                                },
+                                {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/TransactionData"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "500": {
+                        "description": "retrieving data error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
                     }
                 }
             }
         },
-        "/cancel/{provider}": {
+        "/transaction/{provider}": {
             "post": {
-                "description": "Cancel a transaction by reference_id.",
+                "tags": [
+                    "Payment"
+                ],
+                "description": "Update a transaction by reference_id.",
+                "operationId": "UpdateTransactionByReferenceId",
                 "parameters": [
                     {
                         "name": "provider",
                         "in": "path",
-                        "description": "Name of the payment provider (ex: magellan).",
+                        "description": "Payment provider",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "reference_id",
                         "in": "query",
-                        "description": "Only for Magellan provider.",
-                        "required": false,
+                        "description": "Magellan provider, external reference number transmitted by the client",
+                        "required": true,
                         "type": "string"
                     },
                     {
                         "name": "result_label",
                         "in": "query",
-                        "description": "Only for Magellan provider.",
-                        "required": false,
+                        "description": "Magellan provider, Explanatory text on the back",
+                        "required": true,
                         "type": "string"
                     },
                     {
                         "name": "transaction_id",
                         "in": "query",
-                        "description": "Only for Magellan provider.",
-                        "required": false,
+                        "description": "Magellan provider, Tracking transaction ID",
+                        "required": true,
                         "type": "string"
                     },
                     {
                         "name": "auth_code",
                         "in": "query",
-                        "description": "Only for Magellan provider.",
-                        "required": false,
+                        "description": "Magellan provider, authorization number of the transaction",
+                        "required": true,
                         "type": "string"
                     },
                     {
                         "name": "result_code",
                         "in": "query",
-                        "description": "Only for Magellan provider.",
-                        "required": false,
+                        "description": "Magellan provider, return code",
+                        "required": true,
                         "type": "string"
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "A JSON file with confirmation message for cancel."
+                        "description": "A JSON file with message result for payment.",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/Context"
+                                },
+                                {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/TransactionResponse"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "404": {
+                        "description": "not transaction found",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "updating transaction error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/receipt/{provider}": {
+            "post": {
+                "tags": [
+                    "Payment"
+                ],
+                "description": "Url receipt.",
+                "operationId": "receiptTransactionUrl",
+                "parameters": [
+                    {
+                        "name": "provider",
+                        "in": "path",
+                        "description": "Payment provider",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "reference_id",
+                        "in": "query",
+                        "description": "Magellan provider, external reference number transmitted by the client",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "result_label",
+                        "in": "query",
+                        "description": "Magellan provider, Explanatory text on the back",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "transaction_id",
+                        "in": "query",
+                        "description": "Magellan provider, Tracking transaction ID",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "auth_code",
+                        "in": "query",
+                        "description": "Magellan provider, authorization number of the transaction",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "result_code",
+                        "in": "query",
+                        "description": "Magellan provider, return code",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A JSON file with message and origin front.",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/Context"
+                                },
+                                {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/ReceiptResponse"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "404": {
+                        "description": "not found",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "updating transaction error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
                     }
                 }
             }
         }
     },
-    "definitions": {}
+    "definitions": {
+        "Context": {
+            "properties": {
+                "context": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Success": {
+            "properties": {
+                "data": {
+                    "properties": {
+                        "message": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/Context"
+                }
+            ]
+        },
+        "Error": {
+            "required": [
+                "errors"
+            ],
+            "properties": {
+                "errors": {
+                    "type": "array",
+                    "items": {
+                        "properties": {
+                            "message": {
+                                "type": "string"
+                            },
+                            "code": {
+                                "type": "integer"
+                            },
+                            "type": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/Context"
+                }
+            ]
+        },
+        "IdableEntity": {
+            "required": [
+                "id"
+            ],
+            "properties": {
+                "id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "TransactionData": {
+            "required": [
+                "content"
+            ],
+            "properties": {
+                "content": {
+                    "type": "string"
+                }
+            }
+        },
+        "TransactionResponse": {
+            "required": [
+                "message"
+            ],
+            "properties": {
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "ReceiptResponse": {
+            "required": [
+                "reference_id",
+                "origin",
+                "status",
+                "message"
+            ],
+            "properties": {
+                "reference_id": {
+                    "type": "string"
+                },
+                "origin": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "bearer": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }
+    }
 }
