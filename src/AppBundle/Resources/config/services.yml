@@ -7,4 +7,4 @@ services:
     AppBundle\Service\StorageService:
         arguments:
             - Predis\Client
-        public: true
+        public: false

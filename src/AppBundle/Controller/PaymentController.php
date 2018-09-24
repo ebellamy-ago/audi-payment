@@ -341,7 +341,7 @@ class PaymentController extends MullenloweRestController
         $paymentProducer = $this->get('old_sound_rabbit_mq.payment_crud_producer');
         $keyRedis = sprintf('payment_%s', $referenceId);
         $redisData = $storageService->getDataFromRedis($keyRedis);
-        $paymentProducer->publishJson(['data' => $redisData], 'Lead', 'update');
+        $paymentProducer->publishJson(['data' => $redisData], 'Lead', 'update', 'crud.payment');
 
         return $this->createView(['message' => $transactionStatus->getStatusMessage()]);
     }
