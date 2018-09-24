@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\TransactionHistory;
 use AppBundle\Service\StorageService;
+use AppBundle\Service\PaymentProducer;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\View\View;
 use Mullenlowe\CommonBundle\Component\AMQP\CrudProducer;
@@ -316,9 +317,15 @@ class PaymentController extends MullenloweRestController
      * )
      *
      * @param StatusTransactionInterface $transactionStatus
+     * @param StorageService $storageService
+     * @param PaymentProducer $producer
      * @return View
      */
-    public function transactionAction(StatusTransactionInterface $transactionStatus, StorageService $storageService)
+    public function transactionAction(
+        StatusTransactionInterface $transactionStatus,
+        StorageService $storageService,
+        PaymentProducer $producer
+    )
     {
         $referenceId = $transactionStatus->getReferenceId();
         $manager = $this->getDoctrine()->getManager();
@@ -337,11 +344,9 @@ class PaymentController extends MullenloweRestController
         $manager->persist(new TransactionHistory($referenceId, $transactionStatus->getStatus()));
         $manager->flush();
 
-        /** @var CrudProducer $paymentProducer */
-        $paymentProducer = $this->get('old_sound_rabbit_mq.payment_crud_producer');
         $keyRedis = sprintf('payment_%s', $referenceId);
         $redisData = $storageService->getDataFromRedis($keyRedis);
-        $paymentProducer->publishJson(['data' => $redisData], 'Lead', 'update', 'crud.payment');
+        $producer->publish($redisData);
 
         return $this->createView(['message' => $transactionStatus->getStatusMessage()]);
     }

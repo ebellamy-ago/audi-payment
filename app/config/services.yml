@@ -34,3 +34,7 @@ services:
             $uriSigner: '@uri_signer'
 
     Predis\Client: '@snc_redis.default'
+
+    AppBundle\Service\PaymentProducer:
+        arguments:
+            $producer: '@old_sound_rabbit_mq.payment_crud_producer'
