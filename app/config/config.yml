@@ -88,3 +88,10 @@ fos_rest:
     routing_loader:
         default_format: json
         include_format: false
+
+snc_redis:
+    clients:
+        default:
+            type: predis
+            alias: default
+            dsn: 'redis://%redis_host%'

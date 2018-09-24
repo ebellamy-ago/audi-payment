@@ -32,3 +32,5 @@ services:
     AppBundle\Controller\PaymentController:
         arguments:
             $uriSigner: '@uri_signer'
+
+    Predis\Client: '@snc_redis.default'

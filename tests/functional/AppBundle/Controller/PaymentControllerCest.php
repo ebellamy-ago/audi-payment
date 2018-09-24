@@ -20,7 +20,8 @@ class PaymentControllerCest
         $entity = $I->grabEntityFromRepository(AbstractTransaction::class, ['referenceId' => $example['reference_id']]);
 
         $I->assertInstanceOf(AbstractTransaction::class, $entity);
-        $I->seeResponseContainsJson(['content' => $expected]);
+        $I->seeResponseContainsJson(['context' => 'Payment']);
+        $I->seeResponseContains('data');
     }
 
     /**

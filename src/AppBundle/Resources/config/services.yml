@@ -1,0 +1,10 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    AppBundle\Service\StorageService:
+        arguments:
+            - Predis\Client
+        public: true
