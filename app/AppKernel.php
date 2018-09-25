@@ -22,7 +22,7 @@ class AppKernel extends Kernel
             new Mullenlowe\PayPluginBundle\PayPluginBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new OldSound\RabbitMqBundle\OldSoundRabbitMqBundle(),
-
+            new Snc\RedisBundle\SncRedisBundle(),
             new AppBundle\AppBundle(),
         ];
 

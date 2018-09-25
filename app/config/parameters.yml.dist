@@ -23,3 +23,5 @@ parameters:
     rabbitmq_host: rabbitmq5.audi.dev.agence-one.net
     rabbitmq_user: guest
     rabbitmq_password: guest
+
+    redis_host: localhost

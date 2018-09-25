@@ -3,6 +3,8 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\TransactionHistory;
+use AppBundle\Service\StorageService;
+use AppBundle\Service\PaymentProducer;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\View\View;
 use Mullenlowe\CommonBundle\Component\AMQP\CrudProducer;
@@ -14,11 +16,11 @@ use Mullenlowe\PayPluginBundle\Model\AbstractTransaction;
 use Mullenlowe\PayPluginBundle\Model\MagellanStatusTransaction;
 use Mullenlowe\PayPluginBundle\Model\StatusTransactionInterface;
 use Mullenlowe\PayPluginBundle\Service\Provider\Providers;
-use Psr\Log\LoggerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Swagger\Annotations as SWG;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\UriSigner;
+use Mullenlowe\CommonBundle\Security\User\AuthUserProvider;
 
 /**
  * Class PaymentController
@@ -38,9 +40,9 @@ class PaymentController extends MullenloweRestController
      * @param JWTTokenAuthenticator $authenticator
      * @param UriSigner             $uriSigner
      */
-    public function __construct(JWTTokenAuthenticator $authenticator, UriSigner $uriSigner)
+    public function __construct(JWTTokenAuthenticator $authenticator, UriSigner $uriSigner, AuthUserProvider $authUserProvider)
     {
-        parent::__construct($authenticator);
+        parent::__construct($authenticator, $authUserProvider);
 
         $this->uriSigner = $uriSigner;
     }
@@ -214,6 +216,16 @@ class PaymentController extends MullenloweRestController
         }
 
         $manager = $this->getDoctrine()->getManager();
+        $hasTransaction = (bool) $manager
+            ->getRepository(AbstractTransaction::class)
+            ->findByReferenceId($transaction->getReferenceId())
+        ;
+
+        if ($hasTransaction) {
+            throw $this->createNotFoundException(
+                sprintf('A transaction with the reference_id "%s" already exists', $transaction->getReferenceId())
+            );
+        }
 
         $transactionHistory = new TransactionHistory(
             $transaction->getReferenceId(),
@@ -306,9 +318,15 @@ class PaymentController extends MullenloweRestController
      * )
      *
      * @param StatusTransactionInterface $transactionStatus
+     * @param StorageService $storageService
+     * @param PaymentProducer $producer
      * @return View
      */
-    public function transactionAction(StatusTransactionInterface $transactionStatus)
+    public function transactionAction(
+        StatusTransactionInterface $transactionStatus,
+        StorageService $storageService,
+        PaymentProducer $producer
+    )
     {
         $referenceId = $transactionStatus->getReferenceId();
         $manager = $this->getDoctrine()->getManager();
@@ -326,6 +344,10 @@ class PaymentController extends MullenloweRestController
 
         $manager->persist(new TransactionHistory($referenceId, $transactionStatus->getStatus()));
         $manager->flush();
+
+        $keyRedis = sprintf('payment_%s', $referenceId);
+        $redisData = $storageService->getDataFromRedis($keyRedis);
+        $producer->publish($redisData);
 
         return $this->createView(['message' => $transactionStatus->getStatusMessage()]);
     }
@@ -420,10 +442,6 @@ class PaymentController extends MullenloweRestController
                 sprintf('No transaction found with the reference_id "%s"', $referenceId)
             );
         }
-
-        /** @var CrudProducer $paymentProducer */
-        $paymentProducer = $this->get('old_sound_rabbit_mq.payment_crud_producer');
-        $paymentProducer->publishJson(['reference_id' => $transaction->getReferenceId()], self::CONTEXT, 'update');
 
         $response = [
             'reference_id' => $transaction->getReferenceId(),
