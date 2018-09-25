@@ -20,6 +20,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Swagger\Annotations as SWG;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\UriSigner;
+use Mullenlowe\CommonBundle\Security\User\AuthUserProvider;
 
 /**
  * Class PaymentController
@@ -39,9 +40,9 @@ class PaymentController extends MullenloweRestController
      * @param JWTTokenAuthenticator $authenticator
      * @param UriSigner             $uriSigner
      */
-    public function __construct(JWTTokenAuthenticator $authenticator, UriSigner $uriSigner)
+    public function __construct(JWTTokenAuthenticator $authenticator, UriSigner $uriSigner, AuthUserProvider $authUserProvider)
     {
-        parent::__construct($authenticator);
+        parent::__construct($authenticator, $authUserProvider);
 
         $this->uriSigner = $uriSigner;
     }

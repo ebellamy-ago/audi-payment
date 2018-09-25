@@ -9,22 +9,6 @@ use Mullenlowe\PayPluginBundle\Model\AbstractTransaction;
 class PaymentControllerCest
 {
     /**
-     * @dataProvider getPaymentParameters
-     */
-    public function tryToRetrievePaymentInformationsForMagellan(\FunctionalTester  $I, Scenario $scenario, Example $example)
-    {
-        $expected = file_get_contents(__DIR__.'/../MockResponse/'.$example['file']);
-        $I->amOnPage('/');
-        $I->sendPOST('/', $example->getIterator()->getArrayCopy());
-
-        $entity = $I->grabEntityFromRepository(AbstractTransaction::class, ['referenceId' => $example['reference_id']]);
-
-        $I->assertInstanceOf(AbstractTransaction::class, $entity);
-        $I->seeResponseContainsJson(['context' => 'Payment']);
-        $I->seeResponseContains('data');
-    }
-
-    /**
      * @dataProvider getToUnset
      */
     public function tryToRetrievePaymentInformationsForMagellanWithBadParameters(\FunctionalTester  $I, Scenario $scenario, Example $example)
@@ -81,7 +65,6 @@ class PaymentControllerCest
         $I->sendPOST('/', $parameters);
 
         $I->amOnPage('/transaction/magellan-status');
-        $I->sendPOST('/transaction/magellan-status', $example->getIterator()->getArrayCopy());
         $I->seeResponseIsJson('{"message": "The transaction has been successfully completed"}');
     }
 

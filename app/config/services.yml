@@ -35,6 +35,4 @@ services:
 
     Predis\Client: '@snc_redis.default'
 
-    AppBundle\Service\PaymentProducer:
-        arguments:
-            $producer: '@old_sound_rabbit_mq.payment_crud_producer'
+    Mullenlowe\CommonBundle\Component\AMQP\CrudProducer: '@old_sound_rabbit_mq.payment_crud_producer'

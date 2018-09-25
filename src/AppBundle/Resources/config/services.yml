@@ -8,3 +8,8 @@ services:
         arguments:
             - Predis\Client
         public: false
+
+    AppBundle\Service\PaymentProducer:
+        arguments:
+            - Mullenlowe\CommonBundle\Component\AMQP\CrudProducer
+        public: false
