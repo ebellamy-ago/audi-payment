@@ -22,8 +22,8 @@ parameters:
             url: https://epay.magellanset.com/api/merchantAuthenticateServlet
             secret: serhdfbv985619431qsqdcds
         pms:
-            url: https://epay.magellanset.com/api/merchantAuthenticateServlet # TODO : change with PMS value
-            secret: serhdfbv985619431qsqdcds # TODO : change with PMS value
+            url: https://epay.magellanset.com/api/merchantAuthenticateServlet
+            secret: btrs6b1d5b1ts98rqv9qv15r
 
     # rabbitMQ
     rabbitmq_host: rabbitmq5.audi.dev.agence-one.net
