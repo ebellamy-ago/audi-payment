@@ -79,9 +79,7 @@ stof_doctrine_extensions:
 
 # Plugin payment Configuration
 pay_plugin:
-    magellan:
-        url: '%payment_magellan_url%'
-        secret: '%payment_magellan_secret%'
+    magellan: '%payment_magellan%'
 
 fos_rest:
     format_listener: true
