@@ -20,10 +20,10 @@ parameters:
     payment_magellan:
         etron:
             url: https://epay.magellanset.com/api/merchantAuthenticateServlet
-            secret: serhdfbv985619431qsqdcds
+            secret: xxxxxx
         pms:
             url: https://epay.magellanset.com/api/merchantAuthenticateServlet
-            secret: btrs6b1d5b1ts98rqv9qv15r
+            secret: xxxxxx
 
     # rabbitMQ
     rabbitmq_host: rabbitmq5.audi.dev.agence-one.net
