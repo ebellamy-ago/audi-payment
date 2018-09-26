@@ -19,10 +19,10 @@ parameters:
     # Payment
     payment_magellan:
         etron:
-            url: https://epay.magellanset.com/api/merchantAuthenticateServlet
+            url: https://epay-test.magellanset.com/api/merchantAuthenticateServlet
             secret: xxxxxx
         pms:
-            url: https://epay.magellanset.com/api/merchantAuthenticateServlet
+            url: https://epay-test.magellanset.com/api/merchantAuthenticateServlet
             secret: xxxxxx
 
     # rabbitMQ
