@@ -16,8 +16,14 @@ parameters:
     # A secret key that's used to generate certain security-related tokens
     secret: ThisTokenIsNotSoSecretChangeIt
 
-    payment_magellan_url: https://epay.magellanset.com/api/merchantAuthenticateServlet
-    payment_magellan_secret: serhdfbv985619431qsqdcds
+    # Payment
+    payment_magellan:
+        etron:
+            url: https://epay-test.magellanset.com/api/merchantAuthenticateServlet
+            secret: xxxxxx
+        pms:
+            url: https://epay-test.magellanset.com/api/merchantAuthenticateServlet
+            secret: xxxxxx
 
     # rabbitMQ
     rabbitmq_host: rabbitmq5.audi.dev.agence-one.net
