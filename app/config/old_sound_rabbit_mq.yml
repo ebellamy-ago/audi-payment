@@ -1,3 +1,6 @@
+parameters:
+    crud_exchange: '%env%.CRUD'
+
 # RabbitMQ configuration
 old_sound_rabbit_mq:
     connections:
@@ -31,7 +34,7 @@ old_sound_rabbit_mq:
             connection: 'default'
             class: Mullenlowe\CommonBundle\Component\AMQP\CrudProducer
             exchange_options:
-                name: 'CRUD'
+                name: '%crud_exchange%'
                 type: 'direct'
 
 mullenlowe_common:
