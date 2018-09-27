@@ -345,7 +345,7 @@ class PaymentController extends MullenloweRestController
         $manager->persist(new TransactionHistory($referenceId, $transactionStatus->getStatus()));
         $manager->flush();
 
-        $keyRedis = sprintf('payment_%s', $referenceId);
+        $keyRedis = sprintf('etron_payment_%s', $referenceId);
         $redisData = $storageService->getDataFromRedis($keyRedis);
         $producer->publish($redisData);
 
