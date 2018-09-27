@@ -31,3 +31,4 @@ parameters:
     rabbitmq_password: guest
 
     redis_host: localhost
+    env: dev
