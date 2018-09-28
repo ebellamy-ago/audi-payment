@@ -10,7 +10,7 @@ use Mullenlowe\CommonBundle\Component\AMQP\CrudProducer;
  */
 class PaymentProducer
 {
-    const CONTEXT = 'Lead';
+    const CONTEXT = 'Payment';
     const ACTION = 'update';
     const ROUTING_KEY = 'crud.payment';
 
@@ -35,7 +35,7 @@ class PaymentProducer
     public function publish($data)
     {
         $this->producer->publishJson(
-            ['data' => $data],
+            $data,
             self::CONTEXT,
             self::ACTION,
             self::ROUTING_KEY
