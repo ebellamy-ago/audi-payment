@@ -30,6 +30,9 @@ class PaymentController extends MullenloweRestController
 {
     const CONTEXT = 'Payment';
 
+    const STATUS_FINALIZED = 'Finalized';
+    const STATUS_CANCELED = 'Canceled';
+
     /**
      * @var UriSigner
      */
@@ -347,6 +350,8 @@ class PaymentController extends MullenloweRestController
 
         $keyRedis = sprintf('payment_%s', $referenceId);
         $redisData = json_decode($storageService->getDataFromRedis($keyRedis), true);
+        $redisData["order_status"] = (StatusTransactionInterface::OK === $transactionStatus->getStatus()) ? self::STATUS_FINALIZED : self::STATUS_CANCELED;
+
         $producer->publish($redisData);
 
         return $this->createView(['message' => $transactionStatus->getStatusMessage()]);
