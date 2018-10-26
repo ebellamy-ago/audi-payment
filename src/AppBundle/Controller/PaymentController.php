@@ -21,6 +21,7 @@ use Swagger\Annotations as SWG;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\UriSigner;
 use Mullenlowe\CommonBundle\Security\User\AuthUserProvider;
+use Mullenlowe\CommonBundle\Exception\NotFoundHttpException;
 
 /**
  * Class PaymentController
@@ -456,5 +457,71 @@ class PaymentController extends MullenloweRestController
         ];
 
         return $this->createView($response);
+    }
+
+    /**
+     * @Rest\Get("/{referenceId}", name="_transaction")
+     *
+     * @SWG\Get(
+     *     path="/{referenceId}",
+     *     summary="Get a Transaction from referenceId",
+     *     operationId="getTransactionByReferenceId",
+     *     tags={"Transaction"},
+     *     @SWG\Parameter(
+     *         name="referenceId",
+     *         in="path",
+     *         type="string",
+     *         required=true,
+     *         description="referenceId"
+     *     ),
+     *     @SWG\Response(
+     *         response=200,
+     *         description="Target one transaction by referenceId",
+     *         @SWG\Schema(
+     *             allOf={
+     *                 @SWG\Definition(ref="#/definitions/Context"),
+     *                 @SWG\Definition(
+     *                     @SWG\Property(property="data", ref="#/definitions/TransactionComplete"),
+     *                 )
+     *             }
+     *         )
+     *     ),
+     *     @SWG\Response(
+     *         response=404,
+     *         description="Transaction not found",
+     *         @SWG\Schema(ref="#/definitions/Error")
+     *     ),
+     *     @SWG\Response(
+     *         response=500,
+     *         description="Internal server error",
+     *         @SWG\Schema(ref="#/definitions/Error")
+     *     ),
+     *   security={{ "bearer":{} }}
+     * )
+     *
+     * @param string $referenceId
+     * @return View
+     */
+    public function getAction($referenceId)
+    {
+        $manager = $this->getDoctrine()->getManager();
+
+        $transaction = $manager
+            ->getRepository(AbstractTransaction::class)
+            ->findOneByReferenceId($referenceId);
+
+        if (!$transaction) {
+            throw new NotFoundHttpException(self::CONTEXT, 'Transaction not found');
+        }
+
+        $transactionHistory = $manager
+            ->getRepository(TransactionHistory::class)
+            ->getCurrentStatusByReferenceId($referenceId);
+
+        if ($transactionHistory) {
+            $transaction->setCurrentStatus($transactionHistory->getStatus());
+        }
+
+        return $this->createView($transaction);
     }
 }
