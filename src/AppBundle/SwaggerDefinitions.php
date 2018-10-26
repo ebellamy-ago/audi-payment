@@ -80,6 +80,29 @@ class SwaggerDefinitions
      *         @SWG\Property(property="message", type="string"),
      *         required={"reference_id", "origin","status", "message"}
      *     ),
+     *
+     *     @SWG\Definition(
+     *         definition="Transaction",
+     *         allOf={
+     *             @SWG\Definition(
+     *                  @SWG\Property(property="referenceId", type="string"),
+     *                  @SWG\Property(property="amount", type="integer"),
+     *                  @SWG\Property(property="currency", type="string"),
+     *                  @SWG\Property(property="createdAt", type="string", format="date-time"),
+     *                  @SWG\Property(property="origin", type="string"),
+     *                  @SWG\Property(property="currentStatus", type="string")
+     *             ),
+     *         }
+     *     ),
+     *
+     *     @SWG\Definition(
+     *         definition="TransactionComplete",
+     *         allOf={
+     *             @SWG\Definition(ref="#/definitions/IdableEntity"),
+     *             @SWG\Definition(ref="#/definitions/Transaction"),
+     *         }
+     *     ),
+     *
      * )
      *
      * @SWG\SecurityScheme(
