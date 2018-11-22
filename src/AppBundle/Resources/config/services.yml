@@ -9,7 +9,7 @@ services:
             - Predis\Client
         public: false
 
-    AppBundle\Service\PaymentProducer:
+    AppBundle\Service\OrderProducer:
         arguments:
             - Mullenlowe\CommonBundle\Component\AMQP\CrudProducer
         public: false
