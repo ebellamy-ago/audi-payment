@@ -25,6 +25,10 @@ parameters:
             url: https://epay-test.magellanset.com/api/merchantAuthenticateServlet
             secret: xxxxxx
 
+        ecom:
+            url: https://epay-test.magellanset.com/api/merchantAuthenticateServlet
+            secret: xxxxxx
+
     # rabbitMQ
     rabbitmq_host: rabbitmq5.audi.dev.agence-one.net
     rabbitmq_user: guest
