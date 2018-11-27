@@ -35,3 +35,5 @@ parameters:
 
     redis_host: localhost
     env: dev
+
+    guzzle_verify_ssl: true
