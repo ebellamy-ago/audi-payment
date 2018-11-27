@@ -3,14 +3,15 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\TransactionHistory;
+use AppBundle\Service\OrderProducer;
 use AppBundle\Service\StorageService;
-use AppBundle\Service\PaymentProducer;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\View\View;
-use Mullenlowe\CommonBundle\Component\AMQP\CrudProducer;
 use Mullenlowe\CommonBundle\Controller\MullenloweRestController;
 use Mullenlowe\CommonBundle\Exception\BadRequestHttpException;
+use Mullenlowe\CommonBundle\Exception\NotFoundHttpException;
 use Mullenlowe\CommonBundle\Security\Guard\JWTTokenAuthenticator;
+use Mullenlowe\CommonBundle\Security\User\AuthUserProvider;
 use Mullenlowe\PayPluginBundle\Exceptions\UndefinedProviderException;
 use Mullenlowe\PayPluginBundle\Model\AbstractTransaction;
 use Mullenlowe\PayPluginBundle\Model\MagellanStatusTransaction;
@@ -20,7 +21,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Swagger\Annotations as SWG;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\UriSigner;
-use Mullenlowe\CommonBundle\Security\User\AuthUserProvider;
 
 /**
  * Class PaymentController
@@ -322,13 +322,13 @@ class PaymentController extends MullenloweRestController
      *
      * @param StatusTransactionInterface $transactionStatus
      * @param StorageService $storageService
-     * @param PaymentProducer $producer
+     * @param OrderProducer $producer
      * @return View
      */
     public function transactionAction(
         StatusTransactionInterface $transactionStatus,
         StorageService $storageService,
-        PaymentProducer $producer
+        OrderProducer $producer
     )
     {
         $referenceId = $transactionStatus->getReferenceId();
