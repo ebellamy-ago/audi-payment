@@ -349,8 +349,10 @@ class PaymentController extends MullenloweRestController
         $manager->flush();
 
         $keyRedis = sprintf('payment_%s', $referenceId);
-        $redisData = json_decode($storageService->getDataFromRedis($keyRedis), true);
-        $redisData["order_status"] = (StatusTransactionInterface::OK === $transactionStatus->getStatus()) ? self::STATUS_FINALIZED : self::STATUS_CANCELED;
+        $redisData = $this->formatTransition(
+            json_decode($storageService->getDataFromRedis($keyRedis), true),
+            $transactionStatus->getStatus()
+        );
 
         $producer->publish($redisData);
 
@@ -457,4 +459,22 @@ class PaymentController extends MullenloweRestController
 
         return $this->createView($response);
     }
+
+    /**
+     * @param array $redisData
+     * @param $status
+     * @return array
+     */
+    private function formatTransition(array $redisData, $status)
+    {
+        $data = [
+            'order' => $redisData['order'] ?? null,
+            'transition' => (StatusTransactionInterface::OK === $status) ? self::STATUS_FINALIZED : self::STATUS_CANCELED,
+        ];
+
+        return $data;
+    }
+
+
+
 }
