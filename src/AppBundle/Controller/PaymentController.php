@@ -470,6 +470,7 @@ class PaymentController extends MullenloweRestController
         $data = [
             'order' => $redisData['order'] ?? null,
             'transition' => (StatusTransactionInterface::OK === $status) ? self::STATUS_FINALIZED : self::STATUS_CANCELED,
+            'transitionAt' => (new \DateTime())->format('Y-m-d H:i:s'),
         ];
 
         return $data;
