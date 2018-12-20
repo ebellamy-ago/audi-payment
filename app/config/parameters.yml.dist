@@ -24,6 +24,9 @@ parameters:
         pms:
             url: https://epay-test.magellanset.com/api/merchantAuthenticateServlet
             secret: xxxxxx
+        tt:
+            url: 'https://epay-test.magellanset.com/api/merchantAuthenticateServlet'
+            secret: xxxxxx
 
         ecom:
             url: https://epay-test.magellanset.com/api/merchantAuthenticateServlet
