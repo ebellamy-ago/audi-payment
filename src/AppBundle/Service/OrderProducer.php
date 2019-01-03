@@ -5,14 +5,14 @@ namespace AppBundle\Service;
 use Mullenlowe\CommonBundle\Component\AMQP\CrudProducer;
 
 /**
- * Class PaymentProducer
- * @package AppBundle\Service\PaymentProducer
+ * Class OrderProducer
+ * @package AppBundle\Service
  */
-class PaymentProducer
+class OrderProducer
 {
-    const CONTEXT = 'Payment';
+    const CONTEXT = 'Order';
     const ACTION = 'update';
-    const ROUTING_KEY = 'crud.payment';
+    const ROUTING_KEY = 'crud.order';
 
     /**
      * @var CrudProducer
@@ -20,7 +20,7 @@ class PaymentProducer
     private $producer;
 
     /**
-     * PaymentProducer constructor.
+     * OrderProducer constructor.
      *
      * @param CrudProducer $producer
      */
