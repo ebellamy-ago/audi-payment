@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c98e38d4109abeb4b2ff8b12d49301f5",
+    "content-hash": "3d64504449a5adab42232c7969e5d3cf",
     "packages": [
         {
             "name": "behat/gherkin",
@@ -1172,12 +1172,12 @@
             "version": "v2.5.14",
             "source": {
                 "type": "git",
-                "url": "https://github.com/doctrine/doctrine2.git",
+                "url": "https://github.com/doctrine/orm.git",
                 "reference": "810a7baf81462a5ddf10e8baa8cb94b6eec02754"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/810a7baf81462a5ddf10e8baa8cb94b6eec02754",
+                "url": "https://api.github.com/repos/doctrine/orm/zipball/810a7baf81462a5ddf10e8baa8cb94b6eec02754",
                 "reference": "810a7baf81462a5ddf10e8baa8cb94b6eec02754",
                 "shasum": ""
             },
@@ -2832,16 +2832,16 @@
         },
         {
             "name": "mullenlowe/audi-agc5-plugins-bundle",
-            "version": "dev-release/1.3.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:itagenceone/audi-agc5-plugins-bundle.git",
-                "reference": "4abb25c7f7c39b60d42bf19f7278a52bb4cc86ac"
+                "reference": "05af21025b875a4b38f5d7401f3a5c6bef4e1045"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itagenceone/audi-agc5-plugins-bundle/zipball/4abb25c7f7c39b60d42bf19f7278a52bb4cc86ac",
-                "reference": "4abb25c7f7c39b60d42bf19f7278a52bb4cc86ac",
+                "url": "https://api.github.com/repos/itagenceone/audi-agc5-plugins-bundle/zipball/05af21025b875a4b38f5d7401f3a5c6bef4e1045",
+                "reference": "05af21025b875a4b38f5d7401f3a5c6bef4e1045",
                 "shasum": ""
             },
             "require": {
@@ -2890,7 +2890,7 @@
                 "bundle",
                 "wega"
             ],
-            "time": "2018-12-19T14:47:21+00:00"
+            "time": "2019-01-09T15:27:36+00:00"
         },
         {
             "name": "mullenlowe/component",

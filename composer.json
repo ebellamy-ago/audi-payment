@@ -26,7 +26,7 @@
         "friendsofsymfony/rest-bundle": "^2.3",
         "incenteev/composer-parameter-handler": "^2.0",
         "mullenlowe/audi-agc5-common-bundle": "dev-master",
-        "mullenlowe/audi-agc5-plugins-bundle": "dev-release/1.3.0",
+        "mullenlowe/audi-agc5-plugins-bundle": "dev-master",
         "mullenlowe/component": "dev-master",
         "mullenlowe/pay-plugin-bundle": "dev-master",
         "predis/predis": "1.1.1",
