@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fd58505e9e5aeedce4aa708159f0f6f1",
+    "content-hash": "6119d5f4e26a519dc3570020e6ce30b3",
     "packages": [
         {
             "name": "behat/gherkin",
@@ -1037,12 +1037,12 @@
             "version": "v2.5.14",
             "source": {
                 "type": "git",
-                "url": "https://github.com/doctrine/doctrine2.git",
+                "url": "https://github.com/doctrine/orm.git",
                 "reference": "810a7baf81462a5ddf10e8baa8cb94b6eec02754"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/810a7baf81462a5ddf10e8baa8cb94b6eec02754",
+                "url": "https://api.github.com/repos/doctrine/orm/zipball/810a7baf81462a5ddf10e8baa8cb94b6eec02754",
                 "reference": "810a7baf81462a5ddf10e8baa8cb94b6eec02754",
                 "shasum": ""
             },
@@ -2800,16 +2800,16 @@
         },
         {
             "name": "mullenlowe/pay-plugin-bundle",
-            "version": "dev-develop",
+            "version": "dev-release/ECOM1.0",
             "source": {
                 "type": "git",
                 "url": "git@github.com:itagenceone/pay-plugins.git",
-                "reference": "b2e348df44f9e4fc411720a1f8e7e89432263169"
+                "reference": "45bdedf683692bb6bbff70b71f3d7b951fd13e02"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itagenceone/pay-plugins/zipball/b2e348df44f9e4fc411720a1f8e7e89432263169",
-                "reference": "b2e348df44f9e4fc411720a1f8e7e89432263169",
+                "url": "https://api.github.com/repos/itagenceone/pay-plugins/zipball/45bdedf683692bb6bbff70b71f3d7b951fd13e02",
+                "reference": "45bdedf683692bb6bbff70b71f3d7b951fd13e02",
                 "shasum": ""
             },
             "require": {
@@ -2832,7 +2832,7 @@
                 }
             ],
             "description": "A bundle for communicate with some payment platforms.",
-            "time": "2018-10-29T08:46:25+00:00"
+            "time": "2018-11-26T12:23:46+00:00"
         },
         {
             "name": "myclabs/deep-copy",
