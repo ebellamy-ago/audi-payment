@@ -8,3 +8,20 @@ actor_suffix: Tester
 extensions:
     enabled:
         - Codeception\Extension\RunFailed
+settings:
+    bootstrap: _bootstrap.php
+coverage:
+    enabled: true
+    remote: false
+    include:
+        - src/*
+        - vendor/mullenlowe/*/src/*
+    exclude:
+        - vendor/mullenlowe/*/src/Resources/*
+        - vendor/mullenlowe/audi-agc5-common-bundle/*
+        - vendor/mullenlowe/audi-agc5-plugins-bundle/*
+    low_limit: 30
+    high_limit: 60
+include:
+    - vendor/mullenlowe/component
+    - vendor/mullenlowe/audi-agc5-common-bundle
