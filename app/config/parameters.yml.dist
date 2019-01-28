@@ -27,7 +27,6 @@ parameters:
         tt:
             url: 'https://epay-test.magellanset.com/api/merchantAuthenticateServlet'
             secret: xxxxxx
-
         ecom:
             url: https://epay-test.magellanset.com/api/merchantAuthenticateServlet
             secret: xxxxxx
@@ -39,3 +38,5 @@ parameters:
 
     redis_host: localhost
     env: dev
+
+    guzzle_verify_ssl: true

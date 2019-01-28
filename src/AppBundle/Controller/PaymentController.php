@@ -21,7 +21,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Swagger\Annotations as SWG;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\UriSigner;
-use Mullenlowe\CommonBundle\Exception\NotFoundHttpException;
 
 /**
  * Class PaymentController
@@ -462,22 +461,6 @@ class PaymentController extends MullenloweRestController
     }
 
     /**
-     * @param array $redisData
-     * @param $status
-     * @return array
-     */
-    private function formatTransition(array $redisData, $status)
-    {
-        $data = [
-            'order' => $redisData['order'] ?? null,
-            'transition' => (StatusTransactionInterface::OK === $status) ? self::STATUS_FINALIZED : self::STATUS_CANCELED,
-            'transitionAt' => (new \DateTime())->format('Y-m-d H:i:s'),
-        ];
-
-        return $data;
-    }
-
-    /**
      * @Rest\Get("/{referenceId}", name="_transaction")
      *
      * @SWG\Get(
@@ -543,4 +526,19 @@ class PaymentController extends MullenloweRestController
         return $this->createView($transaction);
     }
 
+    /**
+     * @param array $redisData
+     * @param $status
+     * @return array
+     */
+    private function formatTransition(array $redisData, $status)
+    {
+        $data = [
+            'order' => $redisData['order'] ?? null,
+            'transition' => (StatusTransactionInterface::OK === $status) ? self::STATUS_FINALIZED : self::STATUS_CANCELED,
+            'transitionAt' => (new \DateTime())->format('Y-m-d H:i:s'),
+        ];
+
+        return $data;
+    }
 }
