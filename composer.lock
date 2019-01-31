@@ -2988,12 +2988,12 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:itagenceone/audi-agc5-common-bundle.git",
-                "reference": "3a4d5f74fcf95cec5f494d878ea4a8068b1677c0"
+                "reference": "9946c08bf562405b05504b089acd5b838e776d08"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itagenceone/audi-agc5-common-bundle/zipball/3a4d5f74fcf95cec5f494d878ea4a8068b1677c0",
-                "reference": "3a4d5f74fcf95cec5f494d878ea4a8068b1677c0",
+                "url": "https://api.github.com/repos/itagenceone/audi-agc5-common-bundle/zipball/9946c08bf562405b05504b089acd5b838e776d08",
+                "reference": "9946c08bf562405b05504b089acd5b838e776d08",
                 "shasum": ""
             },
             "require": {
@@ -3007,7 +3007,7 @@
                 "hadesarchitect/json-schema-bundle": "^1.0",
                 "knplabs/knp-paginator-bundle": "^2.7",
                 "knplabs/knp-snappy-bundle": "^1.5",
-                "lexik/jwt-authentication-bundle": "~2.4.0 | ~2.5.0",
+                "lexik/jwt-authentication-bundle": "^2.4",
                 "mullenlowe/component": "dev-master",
                 "neitanod/forceutf8": "~2.0",
                 "nelmio/api-doc-bundle": "^3.0",
@@ -3049,7 +3049,7 @@
             "keywords": [
                 "bundle"
             ],
-            "time": "2019-01-29T16:18:05+00:00"
+            "time": "2019-01-31T11:02:52+00:00"
         },
         {
             "name": "mullenlowe/audi-agc5-plugins-bundle",
