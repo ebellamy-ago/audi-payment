@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "15c8c66a8905080e592023b05afe5905",
+    "content-hash": "9aaf33e7f70ff93c7102ccaf8bdaa59c",
     "packages": [
         {
             "name": "behat/gherkin",
@@ -3157,16 +3157,16 @@
         },
         {
             "name": "mullenlowe/pay-plugin-bundle",
-            "version": "dev-merge/release-ECOM1.0",
+            "version": "dev-release/2.0.0",
             "source": {
                 "type": "git",
                 "url": "git@github.com:itagenceone/pay-plugins.git",
-                "reference": "3442a1f69c777778e999e4ef49ab04950a995a76"
+                "reference": "9b00f0f1e592619facec71b29ab42cb21e03555f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itagenceone/pay-plugins/zipball/3442a1f69c777778e999e4ef49ab04950a995a76",
-                "reference": "3442a1f69c777778e999e4ef49ab04950a995a76",
+                "url": "https://api.github.com/repos/itagenceone/pay-plugins/zipball/9b00f0f1e592619facec71b29ab42cb21e03555f",
+                "reference": "9b00f0f1e592619facec71b29ab42cb21e03555f",
                 "shasum": ""
             },
             "require": {
@@ -3189,7 +3189,7 @@
                 }
             ],
             "description": "A bundle for communicate with some payment platforms.",
-            "time": "2019-01-28T15:49:44+00:00"
+            "time": "2019-01-29T15:16:08+00:00"
         },
         {
             "name": "myclabs/deep-copy",
