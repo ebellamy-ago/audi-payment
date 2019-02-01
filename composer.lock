@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "77327db2fc06bab4241987edb86f2493",
+    "content-hash": "15c8c66a8905080e592023b05afe5905",
     "packages": [
         {
             "name": "behat/gherkin",
@@ -2984,16 +2984,16 @@
         },
         {
             "name": "mullenlowe/audi-agc5-common-bundle",
-            "version": "dev-merge/release-ECOM1.0",
+            "version": "dev-release/2.0.0",
             "source": {
                 "type": "git",
                 "url": "git@github.com:itagenceone/audi-agc5-common-bundle.git",
-                "reference": "9946c08bf562405b05504b089acd5b838e776d08"
+                "reference": "9a07cb7699810c5f44af69d998a5ecdd0d68d905"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itagenceone/audi-agc5-common-bundle/zipball/9946c08bf562405b05504b089acd5b838e776d08",
-                "reference": "9946c08bf562405b05504b089acd5b838e776d08",
+                "url": "https://api.github.com/repos/itagenceone/audi-agc5-common-bundle/zipball/9a07cb7699810c5f44af69d998a5ecdd0d68d905",
+                "reference": "9a07cb7699810c5f44af69d998a5ecdd0d68d905",
                 "shasum": ""
             },
             "require": {
@@ -3049,11 +3049,11 @@
             "keywords": [
                 "bundle"
             ],
-            "time": "2019-01-31T11:02:52+00:00"
+            "time": "2019-02-01T11:11:07+00:00"
         },
         {
             "name": "mullenlowe/audi-agc5-plugins-bundle",
-            "version": "dev-merge/release-ECOM1.0",
+            "version": "dev-release/2.0.0",
             "source": {
                 "type": "git",
                 "url": "git@github.com:itagenceone/audi-agc5-plugins-bundle.git",

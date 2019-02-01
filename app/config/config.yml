@@ -94,10 +94,6 @@ snc_redis:
             alias: default
             dsn: 'redis://%redis_host%'
 
-mullenlowe_common:
-    guzzle:
-        verify_ssl: '%guzzle_verify_ssl%'
-
 mullenlowe_plugins:
     guzzle:
         verify_ssl: '%guzzle_verify_ssl%'
