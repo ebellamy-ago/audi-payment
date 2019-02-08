@@ -30,8 +30,8 @@ class PaymentController extends MullenloweRestController
 {
     const CONTEXT = 'Payment';
 
-    const STATUS_FINALIZED = 'Finalized';
-    const STATUS_CANCELED = 'Canceled';
+    const FINALIZE = 'Finalize';
+    const CANCEL = 'Cancel';
 
     /**
      * @var UriSigner
@@ -535,7 +535,7 @@ class PaymentController extends MullenloweRestController
     {
         $data = [
             'order' => $redisData['order'] ?? null,
-            'transition' => (StatusTransactionInterface::OK === $status) ? self::STATUS_FINALIZED : self::STATUS_CANCELED,
+            'transition' => (StatusTransactionInterface::OK === $status) ? self::FINALIZE : self::CANCEL,
             'transitionAt' => (new \DateTime())->format('Y-m-d H:i:s'),
         ];
 
