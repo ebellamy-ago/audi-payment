@@ -21,6 +21,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Swagger\Annotations as SWG;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\UriSigner;
+use Mullenlowe\PayPluginBundle\Service\Provider\Magellan\MagellanProvider;
 
 /**
  * Class PaymentController
@@ -329,8 +330,7 @@ class PaymentController extends MullenloweRestController
         StatusTransactionInterface $transactionStatus,
         StorageService $storageService,
         OrderProducer $producer
-    )
-    {
+    ) {
         $referenceId = $transactionStatus->getReferenceId();
         $manager = $this->getDoctrine()->getManager();
 
@@ -348,15 +348,27 @@ class PaymentController extends MullenloweRestController
         $manager->persist(new TransactionHistory($referenceId, $transactionStatus->getStatus()));
         $manager->flush();
 
-        $keyRedis = sprintf('payment_%s', $referenceId);
-        $redisData = $this->formatTransition(
-            json_decode($storageService->getDataFromRedis($keyRedis), true),
-            $transactionStatus->getStatus()
-        );
-
-        $producer->publish($redisData);
+        if ($this->retreiveReferencePrefix($referenceId) !== MagellanProvider::ECOM_PREFIX) {
+            $keyRedis = sprintf('payment_%s', $referenceId);
+            $redisData = $this->formatTransition(
+                json_decode($storageService->getDataFromRedis($keyRedis), true),
+                $transactionStatus->getStatus()
+            );
+            $producer->publish($redisData);
+        }
 
         return $this->createView(['message' => $transactionStatus->getStatusMessage()]);
+    }
+
+    /**
+     * @param string $referenceId
+     * @return string
+     */
+    private function retreiveReferencePrefix(string $referenceId)
+    {
+        $data = explode('-', $referenceId);
+
+        return $data[0];
     }
 
     /**
