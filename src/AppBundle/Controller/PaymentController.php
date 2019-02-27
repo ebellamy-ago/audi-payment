@@ -348,7 +348,7 @@ class PaymentController extends MullenloweRestController
         $manager->persist(new TransactionHistory($referenceId, $transactionStatus->getStatus()));
         $manager->flush();
 
-        if ($this->retreiveReferencePrefix($referenceId) !== MagellanProvider::ECOM_PREFIX) {
+        if ($this->retrieveReferencePrefix($referenceId) !== MagellanProvider::ECOM_PREFIX) {
             $keyRedis = sprintf('payment_%s', $referenceId);
             $redisData = $this->formatTransition(
                 json_decode($storageService->getDataFromRedis($keyRedis), true),
@@ -358,17 +358,6 @@ class PaymentController extends MullenloweRestController
         }
 
         return $this->createView(['message' => $transactionStatus->getStatusMessage()]);
-    }
-
-    /**
-     * @param string $referenceId
-     * @return string
-     */
-    private function retreiveReferencePrefix(string $referenceId)
-    {
-        $data = explode('-', $referenceId);
-
-        return $data[0];
     }
 
     /**
@@ -552,5 +541,16 @@ class PaymentController extends MullenloweRestController
         ];
 
         return $data;
+    }
+
+    /**
+     * @param string $referenceId
+     * @return string
+     */
+    private function retrieveReferencePrefix(string $referenceId)
+    {
+        $data = explode('-', $referenceId);
+
+        return $data[0];
     }
 }
