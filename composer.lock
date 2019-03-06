@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f93ee407c3a11d62a8ed51c680e7a6ad",
+    "content-hash": "c5273f487506ae6df6ae7dbfd87825fe",
     "packages": [
         {
             "name": "behat/gherkin",
@@ -2764,7 +2764,7 @@
         },
         {
             "name": "mullenlowe/audi-agc5-common-bundle",
-            "version": "dev-ecom_merged",
+            "version": "dev-release/3.0.0",
             "source": {
                 "type": "git",
                 "url": "git@github.com:itagenceone/audi-agc5-common-bundle.git",
@@ -2837,7 +2837,7 @@
         },
         {
             "name": "mullenlowe/audi-agc5-plugins-bundle",
-            "version": "dev-ecom_merged",
+            "version": "dev-release/3.0.0",
             "source": {
                 "type": "git",
                 "url": "git@github.com:itagenceone/audi-agc5-plugins-bundle.git",
@@ -2941,7 +2941,7 @@
         },
         {
             "name": "mullenlowe/pay-plugin-bundle",
-            "version": "dev-ecom_merged",
+            "version": "dev-release/3.0.0",
             "source": {
                 "type": "git",
                 "url": "git@github.com:itagenceone/pay-plugins.git",
