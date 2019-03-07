@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "c5273f487506ae6df6ae7dbfd87825fe",
+    "content-hash": "3d64504449a5adab42232c7969e5d3cf",
     "packages": [
         {
             "name": "behat/gherkin",
@@ -2764,16 +2764,16 @@
         },
         {
             "name": "mullenlowe/audi-agc5-common-bundle",
-            "version": "dev-release/3.0.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:itagenceone/audi-agc5-common-bundle.git",
-                "reference": "95ad6f449ef1b8df5575618282d05f40c1c27f76"
+                "reference": "167e3623711566d1b0ded0ada8e9aabf9bc4855d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itagenceone/audi-agc5-common-bundle/zipball/95ad6f449ef1b8df5575618282d05f40c1c27f76",
-                "reference": "95ad6f449ef1b8df5575618282d05f40c1c27f76",
+                "url": "https://api.github.com/repos/itagenceone/audi-agc5-common-bundle/zipball/167e3623711566d1b0ded0ada8e9aabf9bc4855d",
+                "reference": "167e3623711566d1b0ded0ada8e9aabf9bc4855d",
                 "shasum": ""
             },
             "require": {
@@ -2833,20 +2833,20 @@
             "keywords": [
                 "bundle"
             ],
-            "time": "2019-02-28T14:55:16+00:00"
+            "time": "2019-03-07T18:50:39+00:00"
         },
         {
             "name": "mullenlowe/audi-agc5-plugins-bundle",
-            "version": "dev-release/3.0.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:itagenceone/audi-agc5-plugins-bundle.git",
-                "reference": "84091707a4e8a7105dcb0b368d368e8001cf06fb"
+                "reference": "26fb2babda528692e2b8efab2630c5cd442576c3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itagenceone/audi-agc5-plugins-bundle/zipball/84091707a4e8a7105dcb0b368d368e8001cf06fb",
-                "reference": "84091707a4e8a7105dcb0b368d368e8001cf06fb",
+                "url": "https://api.github.com/repos/itagenceone/audi-agc5-plugins-bundle/zipball/26fb2babda528692e2b8efab2630c5cd442576c3",
+                "reference": "26fb2babda528692e2b8efab2630c5cd442576c3",
                 "shasum": ""
             },
             "require": {
@@ -2895,7 +2895,7 @@
                 "bundle",
                 "wega"
             ],
-            "time": "2019-02-28T15:09:18+00:00"
+            "time": "2019-03-07T18:50:47+00:00"
         },
         {
             "name": "mullenlowe/component",
@@ -2941,16 +2941,16 @@
         },
         {
             "name": "mullenlowe/pay-plugin-bundle",
-            "version": "dev-release/3.0.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:itagenceone/pay-plugins.git",
-                "reference": "856e4a980d8f375376bff5210300f7127d8e5e7f"
+                "reference": "dc090796444421c837d704fb3a1a2962d274205e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itagenceone/pay-plugins/zipball/856e4a980d8f375376bff5210300f7127d8e5e7f",
-                "reference": "856e4a980d8f375376bff5210300f7127d8e5e7f",
+                "url": "https://api.github.com/repos/itagenceone/pay-plugins/zipball/dc090796444421c837d704fb3a1a2962d274205e",
+                "reference": "dc090796444421c837d704fb3a1a2962d274205e",
                 "shasum": ""
             },
             "require": {
@@ -2973,7 +2973,7 @@
                 }
             ],
             "description": "A bundle for communicate with some payment platforms.",
-            "time": "2019-02-15T13:47:37+00:00"
+            "time": "2019-03-07T19:05:02+00:00"
         },
         {
             "name": "myclabs/deep-copy",
