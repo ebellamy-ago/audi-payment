@@ -93,3 +93,7 @@ snc_redis:
             type: predis
             alias: default
             dsn: 'redis://%redis_host%'
+
+mullenlowe_plugins:
+    guzzle:
+        verify_ssl: '%guzzle_verify_ssl%'

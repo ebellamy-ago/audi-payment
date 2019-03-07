@@ -21,6 +21,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Swagger\Annotations as SWG;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\UriSigner;
+use Mullenlowe\PayPluginBundle\Service\Provider\Magellan\MagellanProvider;
 
 /**
  * Class PaymentController
@@ -30,8 +31,8 @@ class PaymentController extends MullenloweRestController
 {
     const CONTEXT = 'Payment';
 
-    const STATUS_FINALIZED = 'Finalized';
-    const STATUS_CANCELED = 'Canceled';
+    const FINALIZE = 'Finalize';
+    const CANCEL = 'Cancel';
 
     /**
      * @var UriSigner
@@ -329,8 +330,7 @@ class PaymentController extends MullenloweRestController
         StatusTransactionInterface $transactionStatus,
         StorageService $storageService,
         OrderProducer $producer
-    )
-    {
+    ) {
         $referenceId = $transactionStatus->getReferenceId();
         $manager = $this->getDoctrine()->getManager();
 
@@ -348,13 +348,14 @@ class PaymentController extends MullenloweRestController
         $manager->persist(new TransactionHistory($referenceId, $transactionStatus->getStatus()));
         $manager->flush();
 
-        $keyRedis = sprintf('payment_%s', $referenceId);
-        $redisData = $this->formatTransition(
-            json_decode($storageService->getDataFromRedis($keyRedis), true),
-            $transactionStatus->getStatus()
-        );
-
-        $producer->publish($redisData);
+        if ($this->retrieveReferencePrefix($referenceId) !== MagellanProvider::ECOM_PREFIX) {
+            $keyRedis = sprintf('payment_%s', $referenceId);
+            $redisData = $this->formatTransition(
+                json_decode($storageService->getDataFromRedis($keyRedis), true),
+                $transactionStatus->getStatus()
+            );
+            $producer->publish($redisData);
+        }
 
         return $this->createView(['message' => $transactionStatus->getStatusMessage()]);
     }
@@ -461,6 +462,72 @@ class PaymentController extends MullenloweRestController
     }
 
     /**
+     * @Rest\Get("/{referenceId}", name="_transaction")
+     *
+     * @SWG\Get(
+     *     path="/{referenceId}",
+     *     summary="Get a Transaction from referenceId",
+     *     operationId="getTransactionByReferenceId",
+     *     tags={"Transaction"},
+     *     @SWG\Parameter(
+     *         name="referenceId",
+     *         in="path",
+     *         type="string",
+     *         required=true,
+     *         description="referenceId"
+     *     ),
+     *     @SWG\Response(
+     *         response=200,
+     *         description="Target one transaction by referenceId",
+     *         @SWG\Schema(
+     *             allOf={
+     *                 @SWG\Definition(ref="#/definitions/Context"),
+     *                 @SWG\Definition(
+     *                     @SWG\Property(property="data", ref="#/definitions/TransactionComplete"),
+     *                 )
+     *             }
+     *         )
+     *     ),
+     *     @SWG\Response(
+     *         response=404,
+     *         description="Transaction not found",
+     *         @SWG\Schema(ref="#/definitions/Error")
+     *     ),
+     *     @SWG\Response(
+     *         response=500,
+     *         description="Internal server error",
+     *         @SWG\Schema(ref="#/definitions/Error")
+     *     ),
+     *   security={{ "bearer":{} }}
+     * )
+     *
+     * @param string $referenceId
+     * @return View
+     */
+    public function getAction($referenceId)
+    {
+        $manager = $this->getDoctrine()->getManager();
+
+        $transaction = $manager
+            ->getRepository(AbstractTransaction::class)
+            ->findOneByReferenceId($referenceId);
+
+        if (!$transaction) {
+            throw new NotFoundHttpException(self::CONTEXT, 'Transaction not found');
+        }
+
+        $transactionHistory = $manager
+            ->getRepository(TransactionHistory::class)
+            ->getCurrentStatusByReferenceId($referenceId);
+
+        if ($transactionHistory) {
+            $transaction->setCurrentStatus($transactionHistory->getStatus());
+        }
+
+        return $this->createView($transaction);
+    }
+
+    /**
      * @param array $redisData
      * @param $status
      * @return array
@@ -469,13 +536,21 @@ class PaymentController extends MullenloweRestController
     {
         $data = [
             'order' => $redisData['order'] ?? null,
-            'transition' => (StatusTransactionInterface::OK === $status) ? self::STATUS_FINALIZED : self::STATUS_CANCELED,
+            'transition' => (StatusTransactionInterface::OK === $status) ? self::FINALIZE : self::CANCEL,
             'transitionAt' => (new \DateTime())->format('Y-m-d H:i:s'),
         ];
 
         return $data;
     }
 
+    /**
+     * @param string $referenceId
+     * @return string
+     */
+    private function retrieveReferencePrefix(string $referenceId)
+    {
+        $data = explode('-', $referenceId);
 
-
+        return $data[0];
+    }
 }

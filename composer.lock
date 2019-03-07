@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
     "content-hash": "3d64504449a5adab42232c7969e5d3cf",
@@ -2768,17 +2768,18 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:itagenceone/audi-agc5-common-bundle.git",
-                "reference": "d8f0a9411536b78569951c260e4a09685f24bd81"
+                "reference": "167e3623711566d1b0ded0ada8e9aabf9bc4855d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itagenceone/audi-agc5-common-bundle/zipball/d8f0a9411536b78569951c260e4a09685f24bd81",
-                "reference": "d8f0a9411536b78569951c260e4a09685f24bd81",
+                "url": "https://api.github.com/repos/itagenceone/audi-agc5-common-bundle/zipball/167e3623711566d1b0ded0ada8e9aabf9bc4855d",
+                "reference": "167e3623711566d1b0ded0ada8e9aabf9bc4855d",
                 "shasum": ""
             },
             "require": {
                 "doctrine/doctrine-migrations-bundle": "^1.3",
                 "doctrine/orm": "^2.5",
+                "ext-json": "*",
                 "friendsofsymfony/elastica-bundle": "^5.0",
                 "friendsofsymfony/rest-bundle": "^2.2",
                 "guzzlehttp/guzzle": "^6.3",
@@ -2805,6 +2806,10 @@
                 "symfony/symfony": "3.4.*",
                 "symfony/validator": "^3.3"
             },
+            "require-dev": {
+                "codeception/codeception": "^2.5",
+                "symfony/phpunit-bridge": "^3.0"
+            },
             "bin": [
                 "src/bin/swaggerGenerate"
             ],
@@ -2828,7 +2833,7 @@
             "keywords": [
                 "bundle"
             ],
-            "time": "2018-11-23T11:28:14+00:00"
+            "time": "2019-03-07T18:50:39+00:00"
         },
         {
             "name": "mullenlowe/audi-agc5-plugins-bundle",
@@ -2836,12 +2841,12 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:itagenceone/audi-agc5-plugins-bundle.git",
-                "reference": "05af21025b875a4b38f5d7401f3a5c6bef4e1045"
+                "reference": "26fb2babda528692e2b8efab2630c5cd442576c3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itagenceone/audi-agc5-plugins-bundle/zipball/05af21025b875a4b38f5d7401f3a5c6bef4e1045",
-                "reference": "05af21025b875a4b38f5d7401f3a5c6bef4e1045",
+                "url": "https://api.github.com/repos/itagenceone/audi-agc5-plugins-bundle/zipball/26fb2babda528692e2b8efab2630c5cd442576c3",
+                "reference": "26fb2babda528692e2b8efab2630c5cd442576c3",
                 "shasum": ""
             },
             "require": {
@@ -2890,7 +2895,7 @@
                 "bundle",
                 "wega"
             ],
-            "time": "2019-01-09T15:27:36+00:00"
+            "time": "2019-03-07T18:50:47+00:00"
         },
         {
             "name": "mullenlowe/component",
@@ -2940,12 +2945,12 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:itagenceone/pay-plugins.git",
-                "reference": "5b1b9b50a08780f83eb684690d26f7ba1cfdcdf8"
+                "reference": "dc090796444421c837d704fb3a1a2962d274205e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itagenceone/pay-plugins/zipball/5b1b9b50a08780f83eb684690d26f7ba1cfdcdf8",
-                "reference": "5b1b9b50a08780f83eb684690d26f7ba1cfdcdf8",
+                "url": "https://api.github.com/repos/itagenceone/pay-plugins/zipball/dc090796444421c837d704fb3a1a2962d274205e",
+                "reference": "dc090796444421c837d704fb3a1a2962d274205e",
                 "shasum": ""
             },
             "require": {
@@ -2968,7 +2973,7 @@
                 }
             ],
             "description": "A bundle for communicate with some payment platforms.",
-            "time": "2018-12-20T09:46:10+00:00"
+            "time": "2019-03-07T19:05:02+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -4558,6 +4563,7 @@
                 "mock",
                 "xunit"
             ],
+            "abandoned": true,
             "time": "2018-05-29T13:50:43+00:00"
         },
         {

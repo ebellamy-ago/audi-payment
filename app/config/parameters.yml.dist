@@ -27,6 +27,9 @@ parameters:
         tt:
             url: 'https://epay-test.magellanset.com/api/merchantAuthenticateServlet'
             secret: xxxxxx
+        ecom:
+            url: https://epay-test.magellanset.com/api/merchantAuthenticateServlet
+            secret: xxxxxx
 
     # rabbitMQ
     rabbitmq_host: rabbitmq5.audi.dev.agence-one.net
@@ -35,3 +38,5 @@ parameters:
 
     redis_host: localhost
     env: dev
+
+    guzzle_verify_ssl: true
