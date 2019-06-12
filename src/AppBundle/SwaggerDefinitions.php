@@ -90,6 +90,7 @@ class SwaggerDefinitions
      *                  @SWG\Property(property="currency", type="string"),
      *                  @SWG\Property(property="createdAt", type="string", format="date-time"),
      *                  @SWG\Property(property="origin", type="string"),
+     *                  @SWG\Property(property="vin", type="string"),
      *                  @SWG\Property(property="currentStatus", type="string")
      *             ),
      *         }

@@ -24,3 +24,9 @@ Mullenlowe\PayPluginBundle\Model\AbstractTransaction:
           on: create
     origin:
       type: string
+    vin:
+      type: string
+      nullable: true
+      length: 17
+      options:
+        fixed: true
