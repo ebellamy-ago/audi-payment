@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e83f21c3060467581576ab7c620ff3dd",
+    "content-hash": "19a6b534cb72b108642e345d12ca1a7f",
     "packages": [
         {
             "name": "behat/gherkin",
@@ -2941,16 +2941,16 @@
         },
         {
             "name": "mullenlowe/pay-plugin-bundle",
-            "version": "dev-release/3.4.0",
+            "version": "dev-feat/2573-add-vin-to-form",
             "source": {
                 "type": "git",
                 "url": "git@github.com:itagenceone/pay-plugins.git",
-                "reference": "502a2f198a425f8b4dcd4b0c59c5fa63b20cab47"
+                "reference": "3c223364c635caa4071f83912ef6827848edcc03"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itagenceone/pay-plugins/zipball/502a2f198a425f8b4dcd4b0c59c5fa63b20cab47",
-                "reference": "502a2f198a425f8b4dcd4b0c59c5fa63b20cab47",
+                "url": "https://api.github.com/repos/itagenceone/pay-plugins/zipball/3c223364c635caa4071f83912ef6827848edcc03",
+                "reference": "3c223364c635caa4071f83912ef6827848edcc03",
                 "shasum": ""
             },
             "require": {
@@ -2973,7 +2973,7 @@
                 }
             ],
             "description": "A bundle for communicate with some payment platforms.",
-            "time": "2019-06-12T13:06:39+00:00"
+            "time": "2019-06-13T09:46:43+00:00"
         },
         {
             "name": "myclabs/deep-copy",
