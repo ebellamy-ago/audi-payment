@@ -105,6 +105,15 @@ class PaymentController extends MullenloweRestController
      *         )
      *     ),
      *     @SWG\Parameter(
+     *         name="vin",
+     *         required=true,
+     *         in="body",
+     *         description="Front vin",
+     *         @SWG\Schema(
+     *             @SWG\Property(property="vin", type="string")
+     *         )
+     *     ),
+     *     @SWG\Parameter(
      *         name="lastname",
      *         required=true,
      *         in="body",

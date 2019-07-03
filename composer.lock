@@ -2945,12 +2945,12 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:itagenceone/pay-plugins.git",
-                "reference": "dc090796444421c837d704fb3a1a2962d274205e"
+                "reference": "2ddb7e11ca4e9b1767f8234c9fdf6480b44722eb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itagenceone/pay-plugins/zipball/dc090796444421c837d704fb3a1a2962d274205e",
-                "reference": "dc090796444421c837d704fb3a1a2962d274205e",
+                "url": "https://api.github.com/repos/itagenceone/pay-plugins/zipball/2ddb7e11ca4e9b1767f8234c9fdf6480b44722eb",
+                "reference": "2ddb7e11ca4e9b1767f8234c9fdf6480b44722eb",
                 "shasum": ""
             },
             "require": {
@@ -2973,7 +2973,7 @@
                 }
             ],
             "description": "A bundle for communicate with some payment platforms.",
-            "time": "2019-03-07T19:05:02+00:00"
+            "time": "2019-07-03T13:37:17+00:00"
         },
         {
             "name": "myclabs/deep-copy",
