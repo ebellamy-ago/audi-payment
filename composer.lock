@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
     "content-hash": "3d64504449a5adab42232c7969e5d3cf",
@@ -2768,16 +2768,19 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:itagenceone/audi-agc5-common-bundle.git",
-                "reference": "167e3623711566d1b0ded0ada8e9aabf9bc4855d"
+                "reference": "ca8b3b370e3fc3e44c903cdd7cbddce52e821a70"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itagenceone/audi-agc5-common-bundle/zipball/167e3623711566d1b0ded0ada8e9aabf9bc4855d",
-                "reference": "167e3623711566d1b0ded0ada8e9aabf9bc4855d",
+                "url": "https://api.github.com/repos/itagenceone/audi-agc5-common-bundle/zipball/ca8b3b370e3fc3e44c903cdd7cbddce52e821a70",
+                "reference": "ca8b3b370e3fc3e44c903cdd7cbddce52e821a70",
                 "shasum": ""
             },
             "require": {
+                "alcaeus/mongo-php-adapter": "^1.1",
                 "doctrine/doctrine-migrations-bundle": "^1.3",
+                "doctrine/mongodb-odm": "^1.2",
+                "doctrine/mongodb-odm-bundle": "^3.5",
                 "doctrine/orm": "^2.5",
                 "ext-json": "*",
                 "friendsofsymfony/elastica-bundle": "^5.0",
