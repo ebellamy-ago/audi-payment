@@ -3128,12 +3128,12 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:itagenceone/audi-agc5-common-bundle.git",
-                "reference": "2499efe26f4a3bf0de26824bf64ca4fcb13f60d2"
+                "reference": "79096ca86e2e1af427a00419c7ed8b81d99f0177"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itagenceone/audi-agc5-common-bundle/zipball/2499efe26f4a3bf0de26824bf64ca4fcb13f60d2",
-                "reference": "2499efe26f4a3bf0de26824bf64ca4fcb13f60d2",
+                "url": "https://api.github.com/repos/itagenceone/audi-agc5-common-bundle/zipball/79096ca86e2e1af427a00419c7ed8b81d99f0177",
+                "reference": "79096ca86e2e1af427a00419c7ed8b81d99f0177",
                 "shasum": ""
             },
             "require": {
@@ -3196,7 +3196,7 @@
             "keywords": [
                 "bundle"
             ],
-            "time": "2019-07-29T09:47:07+00:00"
+            "time": "2019-07-29T14:30:41+00:00"
         },
         {
             "name": "mullenlowe/audi-agc5-plugins-bundle",
@@ -3308,12 +3308,12 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:itagenceone/pay-plugins.git",
-                "reference": "dc090796444421c837d704fb3a1a2962d274205e"
+                "reference": "2ddb7e11ca4e9b1767f8234c9fdf6480b44722eb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itagenceone/pay-plugins/zipball/dc090796444421c837d704fb3a1a2962d274205e",
-                "reference": "dc090796444421c837d704fb3a1a2962d274205e",
+                "url": "https://api.github.com/repos/itagenceone/pay-plugins/zipball/2ddb7e11ca4e9b1767f8234c9fdf6480b44722eb",
+                "reference": "2ddb7e11ca4e9b1767f8234c9fdf6480b44722eb",
                 "shasum": ""
             },
             "require": {
@@ -3336,7 +3336,7 @@
                 }
             ],
             "description": "A bundle for communicate with some payment platforms.",
-            "time": "2019-03-07T19:05:02+00:00"
+            "time": "2019-07-03T13:37:17+00:00"
         },
         {
             "name": "myclabs/deep-copy",

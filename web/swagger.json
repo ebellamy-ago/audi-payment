@@ -87,6 +87,19 @@
                         }
                     },
                     {
+                        "name": "vin",
+                        "in": "body",
+                        "description": "Front vin",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "vin": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    {
                         "name": "lastname",
                         "in": "body",
                         "description": "The last name of the buyer",
@@ -398,6 +411,60 @@
                     }
                 }
             }
+        },
+        "/{referenceId}": {
+            "get": {
+                "tags": [
+                    "Transaction"
+                ],
+                "summary": "Get a Transaction from referenceId",
+                "operationId": "getTransactionByReferenceId",
+                "parameters": [
+                    {
+                        "name": "referenceId",
+                        "in": "path",
+                        "description": "referenceId",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Target one transaction by referenceId",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/Context"
+                                },
+                                {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/TransactionComplete"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "404": {
+                        "description": "Transaction not found",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
         }
     },
     "definitions": {
@@ -507,6 +574,46 @@
                     "type": "string"
                 }
             }
+        },
+        "Transaction": {
+            "allOf": [
+                {
+                    "properties": {
+                        "referenceId": {
+                            "type": "string"
+                        },
+                        "amount": {
+                            "type": "integer"
+                        },
+                        "currency": {
+                            "type": "string"
+                        },
+                        "createdAt": {
+                            "type": "string",
+                            "format": "date-time"
+                        },
+                        "origin": {
+                            "type": "string"
+                        },
+                        "vin": {
+                            "type": "string"
+                        },
+                        "currentStatus": {
+                            "type": "string"
+                        }
+                    }
+                }
+            ]
+        },
+        "TransactionComplete": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/IdableEntity"
+                },
+                {
+                    "$ref": "#/definitions/Transaction"
+                }
+            ]
         }
     },
     "securityDefinitions": {
