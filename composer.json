@@ -50,22 +50,22 @@
         {
             "type": "vcs",
             "no-api": true,
-            "url": "git@github.com:itagenceone/audi-agc5-common-bundle.git"
+            "url": "git@github.com:agc-live/audi-agc5-common-bundle.git"
         },
         {
             "type": "vcs",
             "no-api": true,
-            "url": "git@github.com:itagenceone/audi-agc5-plugins-bundle.git"
+            "url": "git@github.com:agc-live/audi-agc5-plugins-bundle.git"
         },
         {
             "type": "vcs",
             "no-api": true,
-            "url": "git@github.com:itagenceone/component.git"
+            "url": "git@github.com:agc-live/component.git"
         },
         {
             "type": "vcs",
             "no-api": true,
-            "url": "git@github.com:itagenceone/pay-plugins.git"
+            "url": "git@github.com:agc-live/pay-plugins.git"
         }
     ],
     "scripts": {
