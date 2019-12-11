@@ -3127,12 +3127,12 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "git@github.com:itagenceone/audi-agc5-common-bundle.git",
+                "url": "git@github.com:agc-live/audi-agc5-common-bundle.git",
                 "reference": "79096ca86e2e1af427a00419c7ed8b81d99f0177"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itagenceone/audi-agc5-common-bundle/zipball/79096ca86e2e1af427a00419c7ed8b81d99f0177",
+                "url": "https://api.github.com/repos/agc-live/audi-agc5-common-bundle/zipball/79096ca86e2e1af427a00419c7ed8b81d99f0177",
                 "reference": "79096ca86e2e1af427a00419c7ed8b81d99f0177",
                 "shasum": ""
             },
@@ -3203,12 +3203,12 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "git@github.com:itagenceone/audi-agc5-plugins-bundle.git",
+                "url": "git@github.com:agc-live/audi-agc5-plugins-bundle.git",
                 "reference": "26fb2babda528692e2b8efab2630c5cd442576c3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itagenceone/audi-agc5-plugins-bundle/zipball/26fb2babda528692e2b8efab2630c5cd442576c3",
+                "url": "https://api.github.com/repos/agc-live/audi-agc5-plugins-bundle/zipball/26fb2babda528692e2b8efab2630c5cd442576c3",
                 "reference": "26fb2babda528692e2b8efab2630c5cd442576c3",
                 "shasum": ""
             },
@@ -3265,12 +3265,12 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "git@github.com:itagenceone/component.git",
+                "url": "git@github.com:agc-live/component.git",
                 "reference": "106ef4ea14f037b3b398af9a50fa58a56acb0a45"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itagenceone/component/zipball/106ef4ea14f037b3b398af9a50fa58a56acb0a45",
+                "url": "https://api.github.com/repos/agc-live/component/zipball/106ef4ea14f037b3b398af9a50fa58a56acb0a45",
                 "reference": "106ef4ea14f037b3b398af9a50fa58a56acb0a45",
                 "shasum": ""
             },
@@ -3307,12 +3307,12 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "git@github.com:itagenceone/pay-plugins.git",
+                "url": "git@github.com:agc-live/pay-plugins.git",
                 "reference": "2ddb7e11ca4e9b1767f8234c9fdf6480b44722eb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itagenceone/pay-plugins/zipball/2ddb7e11ca4e9b1767f8234c9fdf6480b44722eb",
+                "url": "https://api.github.com/repos/agc-live/pay-plugins/zipball/2ddb7e11ca4e9b1767f8234c9fdf6480b44722eb",
                 "reference": "2ddb7e11ca4e9b1767f8234c9fdf6480b44722eb",
                 "shasum": ""
             },
